@@ -327,8 +327,8 @@ h3 {
 	display: none;
 }
 
-a:hover i.fa-envelope.fa-inverse::after {
-	content: "Email Me";
+a:hover i.fa-github.fa-inverse::after {
+	content: "Github";
 }
 
 a:hover i.fa-linkedin.fa-inverse::after {
