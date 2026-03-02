@@ -1,284 +1,618 @@
-<!doctype html>
-<html class="no-js" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="I use my design and development skills to deliver well thought out and aesthetically pleasing product solutions" />
-    <meta name="keywords" content="data science, AI, artificial intelligence, deep learning, NLP, data engineering, engineering, computer engineering, computer vision, robotics, chemical engineering, tech, technology, UI, UX, data visualization" />
-    <title>David N Juboor - Data Scientist, Engineer, Entrepreneur.</title>
-    <link rel="stylesheet" href="css/foundation.css" />
-    <link href="fonts/fontawesome/css/all.css" rel="stylesheet">
-    <link href="css/app.css" rel="stylesheet">
-    <script src="js/vendor/modernizr.js"></script>
-    <script src="js/vendor/jquery.js"></script>
-  </head>
-  <body>
-    <div class="contain-to-grid sticky" id="header">
-      <nav data-topbar role="navigation">
-        <h1 id="logo"><a href="index.html">David N Juboor</a></h1>
-        <div class="text-center" id="nav">
-          <a href="index.html" class="active"><i class="fas fa-th-large"></i><span class="link">Portfolio</span></a>
-          <a href="about.html"><span class="link">About</span></a>
-          <a href="https://david1345.typeform.com/to/TBolmd" data-mode="popup" target="_blank" class="typeform-share link"><span>Contact</span></a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>David N. Juboor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root { --bg: #fcfcfc; --text: #1a1a1a; --secondary: #a3a3a3; --border: #e0e0e0; }
+  [data-theme="dark"] { --bg: #111111; --text: #e5e5e5; --secondary: #737373; --border: #2a2a2a; }
+  html { font-size: 16px; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-weight: 400; line-height: 1.6; color: var(--text); background-color: var(--bg); transition: background-color 0.3s ease, color 0.3s ease; opacity: 0; }
+  body.loaded { opacity: 1; transition: opacity 0.4s ease, background-color 0.3s ease, color 0.3s ease; }
+  .container { max-width: 680px; margin: 0 auto; padding: 4rem 1.5rem 3rem; }
+  .theme-toggle { position: fixed; top: 1.25rem; right: 1.25rem; width: 26px; height: 26px; border-radius: 50%; border: 1.5px solid var(--secondary); background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: border-color 0.3s ease; z-index: 100; padding: 0; }
+  .theme-toggle:hover { border-color: var(--text); }
+  .theme-toggle .fill { width: 12px; height: 12px; border-radius: 50%; background-color: transparent; transition: background-color 0.3s ease; }
+  [data-theme="dark"] .theme-toggle .fill { background-color: var(--secondary); }
+  .header { margin-bottom: 2rem; }
+  .header h1 { font-size: 1.5rem; font-weight: 400; letter-spacing: -0.02em; margin-bottom: 0.75rem; }
+  .header .bio { font-size: 0.9375rem; line-height: 1.7; color: var(--secondary); max-width: 600px; }
+  .divider { width: 100%; height: 1px; background-color: var(--border); margin: 2rem 0; }
+  .section-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 0.875rem; }
+  .section-label { font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--secondary); }
+  .section-header .section-label { margin-bottom: 0; }
+  section > .section-label { margin-bottom: 0.875rem; }
+  .section-toggle { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 0.6875rem; font-weight: 400; color: var(--secondary); background: none; border: none; cursor: pointer; padding: 0; position: relative; letter-spacing: 0.02em; }
+  .section-toggle::after { content: ''; position: absolute; bottom: -1px; left: 0; width: 0; height: 1px; background-color: var(--secondary); transition: width 0.25s ease; }
+  .section-toggle:hover::after { width: 100%; }
+  .entry-list .entry { border-bottom: 1px solid var(--border); }
+  .entry-list .entry:first-child { border-top: 1px solid var(--border); }
+  .entry-trigger { display: flex; align-items: center; width: 100%; padding: 0.75rem 0; background: none; border: none; cursor: pointer; text-align: left; font-family: inherit; color: inherit; gap: 0; }
+  .entry-trigger-content { display: flex; align-items: baseline; gap: 1rem; flex: 1; min-width: 0; }
+  .entry-left { display: flex; align-items: baseline; gap: 0.5rem; min-width: 0; flex: 1; }
+  .entry-title { font-size: 0.9375rem; font-weight: 500; letter-spacing: -0.005em; }
+  .entry-role { font-size: 0.8125rem; color: var(--secondary); white-space: nowrap; }
+  .entry-date { font-size: 0.8125rem; color: var(--secondary); white-space: nowrap; flex-shrink: 0; text-align: right; }
+  .entry-chevron { width: 16px; height: 16px; flex-shrink: 0; margin-left: 0.75rem; transition: transform 0.3s ease; color: var(--secondary); }
+  .entry-chevron svg { display: block; width: 100%; height: 100%; }
+  .entry.open .entry-chevron { transform: rotate(180deg); }
+  .entry-body { height: 0; overflow: hidden; transition: height 0.3s ease; }
+  .entry-details { padding-bottom: 0.75rem; }
+  .entry-details ul { list-style: none; padding: 0; }
+  .entry-details li { font-size: 0.8125rem; line-height: 1.6; color: var(--secondary); padding-left: 0.875rem; position: relative; margin-bottom: 0.125rem; }
+  .entry-details li::before { content: '\2013'; position: absolute; left: 0; color: var(--border); }
+  .entry-details li:last-child { margin-bottom: 0; }
+  .entry-details a { color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); transition: border-color 0.2s ease; }
+  .entry-details a:hover { border-color: var(--text); }
+  .patent-list { list-style: none; padding: 0; }
+  .patent-list li { font-size: 0.875rem; line-height: 1.65; color: var(--secondary); padding: 0.1875rem 0; display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+  .patent-list a { color: var(--secondary); text-decoration: none; position: relative; }
+  .patent-list a::after { content: ''; position: absolute; bottom: -1px; left: 0; width: 0; height: 1px; background-color: var(--secondary); transition: width 0.25s ease; }
+  .patent-list a:hover::after { width: 100%; }
+  .patent-year { font-size: 0.75rem; color: var(--secondary); flex-shrink: 0; }
+  .patents-more { margin-top: 0.75rem; }
+  .patents-more-trigger { font-size: 0.8125rem; color: var(--secondary); cursor: pointer; display: inline-flex; align-items: center; gap: 0.375rem; background: none; border: none; padding: 0; font-family: inherit; transition: color 0.2s ease; }
+  .patents-more-trigger:hover { color: var(--text); }
+  .patents-more-trigger .chevron { display: inline-block; font-size: 0.625rem; transition: transform 0.25s ease; }
+  .patents-more-trigger.open .chevron { transform: rotate(90deg); }
+  .patents-more-content { overflow: hidden; max-height: 0; transition: max-height 0.3s ease; }
+  .patents-filed-list { list-style: none; padding: 0; margin-top: 0.5rem; }
+  .patents-filed-list li { font-size: 0.8125rem; line-height: 1.6; color: var(--secondary); padding: 0.125rem 0; padding-left: 0.875rem; position: relative; }
+  .patents-filed-list li::before { content: '\2013'; position: absolute; left: 0; color: var(--border); }
+  .education-block { font-size: 0.9375rem; line-height: 1.7; color: var(--secondary); }
+  .education-block a { color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); transition: border-color 0.2s ease; }
+  .education-block a:hover { border-color: var(--text); }
+  .interests-list { list-style: none; padding: 0; }
+  .interests-list li { font-size: 0.875rem; color: var(--secondary); line-height: 1.8; }
+  .interests-list .qualifier { color: var(--border); }
+  .elsewhere { margin-top: 0; }
+  .elsewhere-links { display: flex; gap: 1.5rem; margin-top: 0.375rem; }
+  .elsewhere-links a { font-size: 0.9375rem; font-weight: 400; color: var(--text); text-decoration: none; position: relative; }
+  .elsewhere-links a::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background-color: var(--text); transition: width 0.25s ease; }
+  .elsewhere-links a:hover::after { width: 100%; }
+  .footer { margin-top: 3.5rem; text-align: center; font-size: 0.75rem; color: var(--secondary); padding-bottom: 0.5rem; }
+  @media (max-width: 480px) {
+    .container { padding: 3rem 1.25rem 2.5rem; }
+    .header h1 { font-size: 1.375rem; }
+    .entry-trigger-content { flex-direction: column; gap: 0.0625rem; align-items: flex-start; }
+    .entry-left { flex-direction: column; gap: 0.0625rem; }
+    .entry-date { font-size: 0.75rem; text-align: left; }
+    .entry-chevron { display: none; }
+    .patent-list li { flex-direction: column; gap: 0; }
+    .patent-year { text-align: left; }
+    .theme-toggle { top: 1rem; right: 1rem; }
+  }
+</style>
+</head>
+<body>
+  <button class="theme-toggle" aria-label="Toggle theme"><span class="fill"></span></button>
+
+  <div class="container">
+
+    <header class="header">
+      <h1>David N. Juboor</h1>
+      <p class="bio">I'm a hyper-curious ML engineer who keeps getting pulled into hard problems across fields I didn't start in. pharma, finance, legal, entertainment, robotics, research &mdash; and often more than one at a time.</p>
+    </header>
+
+    <div class="divider"></div>
+
+    <!-- Experience -->
+    <section>
+      <div class="section-header">
+        <div class="section-label">Experience</div>
+        <button class="section-toggle" data-section="experience">Show all</button>
+      </div>
+      <div class="entry-list" data-accordion="experience">
+
+        <div class="entry">
+          <button class="entry-trigger" aria-expanded="false">
+            <div class="entry-trigger-content">
+              <div class="entry-left">
+                <span class="entry-title">Walt Disney Imagineering</span>
+                <span class="entry-role">Principal ML Engineer</span>
+              </div>
+            </div>
+            <span class="entry-chevron"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 6 8 10 12 6"/></svg></span>
+          </button>
+          <div class="entry-body">
+            <div class="entry-details">
+              <ul>
+                <li>Production LLM search and design systems using vLLM, LiteLLM, Unsloth, and Temporal</li>
+                <li>ML direction for automation, product, and R&amp;D streams</li>
+                <li>Cross-org ML strategy across Imagineering, Disney Research, and Studios</li>
+              </ul>
+            </div>
+          </div>
         </div>
-      </nav>
-    </div>
-  <div class="row" id="portfolio">
-    <div class="small-12 columns" id="hello">
-      <h2>Hi, I'm David</h2>
-      <h4>(aka Nate).</h4>
-      <br>
-      <p>
-        I'm a hyper-curious entrepreneur with a diverse background and tons of nerdy hobbies. While my formal education is in Chemical Engineering, I have been many things in my academic and professional career.
-        <br><br>
-        Currently, I am a Lead Data Scientist at Walt Disney World where I conceive, develop, design, build, test, manufacture, field, service, and retire data science solutions based on rigorous work and excellent team communication.
-        <br><br>
-        When I'm not making dreams come true, I spend my free time inventing, tinkering, and building (usually silly) products that I believe would make the world a better place. Some of them work, some of them don't, but it's always fun to build, measure, and learn.
-        <br><br>
-      <h4>Projects:</h4>
-    </p>
-    </div>
-    <div class="small-12 columns">
-      <ul class="medium-block-grid-2 large-block-grid-3 small-block-grid-1">
-        <li>
-          <a href="https://www.vertexlabs.info" target="_blank">
-            <div class="project"> <img class="hide-for-medium-down" src="img/index/vertex thumb.png" alt="" /><img
-              class="show-for-medium-down" src="img/index/vertex thumb.png" alt="" />
-              <ul class="inline-list">
-                <li>AI Startup</li>
-                <li>Data Science</li>
-                <li>Entrepreneurship</li>
-              </ul>
-              <h4 class="title">Deep Learning Consultancy</h4>
-              <p class="summary">Vertex Labs LLC &middot; Research Firm</p>
+
+        <div class="entry">
+          <button class="entry-trigger" aria-expanded="false">
+            <div class="entry-trigger-content">
+              <div class="entry-left">
+                <span class="entry-title">Disney Parks</span>
+                <span class="entry-role">Lead MLE &rarr; Principal ML Engineer</span>
+              </div>
             </div>
-          </a>
-        </li>
-        <li>
-          <a href="pdfs/Blinc 2 Pitch.pdf#zoom=50&view=FitH" target="_blank">
-            <div class="project"> <img class="hide-for-medium-down" src="img/index/blinc thumb.png" alt="" /><img
-              class="show-for-medium-down" src="img/index/blinc thumb.png" alt="" />
-              <ul class="inline-list">
-                <li>UX/UI</li>
-                <li>Mobile</li>
-                <li>Pitches</li>
+            <span class="entry-chevron"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 6 8 10 12 6"/></svg></span>
+          </button>
+          <div class="entry-body">
+            <div class="entry-details">
+              <ul>
+                <li>Built and managed the ML engineering portfolio for PhotoPass, directing $100MM+/yr segment</li>
+                <li>Managed up to 12 direct reports, ~150 in-house and third-party annotation staff</li>
+                <li>Reduced cloud costs ~90% and increased deploy speed 20x via serverless migration</li>
+                <li>Shipped 15+ products and secured &gt;10 patents for novel ML systems</li>
               </ul>
-              <h4 class="title">Social Discovery iOS app</h4>
-              <p class="summary">Blinc Inc &middot; Events Startup</p>
             </div>
-          </a>
-        </li>
-        <li>
-          <a href="https://www.holdmyramen.com" target="_blank">
-            <div class="project"> <img src="img/index/hmr thumb.png" alt="" />
-              <ul class="inline-list">
-                <li>Website</li>
-                <li>Visual design</li>
-                <li>Editorial</li>
+          </div>
+        </div>
+
+        <div class="entry">
+          <button class="entry-trigger" aria-expanded="false">
+            <div class="entry-trigger-content">
+              <div class="entry-left">
+                <span class="entry-title">Banawa &amp; Co</span>
+                <span class="entry-role">Angel Investor | ML Advisor</span>
+              </div>
+            </div>
+            <span class="entry-chevron"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 6 8 10 12 6"/></svg></span>
+          </button>
+          <div class="entry-body">
+            <div class="entry-details">
+              <ul>
+                <li>ML strategy for small batch fashion design and manufacturing business</li>
+                <li>Advised strategic ML partnerships for executive team</li>
               </ul>
-              <h4 class="title">Web dev and design</h4>
-              <p class="summary">HMR LLC &middot; Engineering Blog</p>
             </div>
-          </a>
-        </li>
+          </div>
+        </div>
+
+        <div class="entry">
+          <button class="entry-trigger" aria-expanded="false">
+            <div class="entry-trigger-content">
+              <div class="entry-left">
+                <span class="entry-title">Black Knight</span>
+                <span class="entry-role">Lead ML Engineer</span>
+              </div>
+            </div>
+            <span class="entry-chevron"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 6 8 10 12 6"/></svg></span>
+          </button>
+          <div class="entry-body">
+            <div class="entry-details">
+              <ul>
+                <li>Mortgage procurement automation for the top 10 global banks</li>
+                <li>Led deep learning team of 8, took production performance from 41% to 92%</li>
+                <li>Reduced overhead costs 30x via serverless architectures</li>
+                <li>Increased NLP transformer performance via novel pruning and ensemble methods</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="entry">
+          <button class="entry-trigger" aria-expanded="false">
+            <div class="entry-trigger-content">
+              <div class="entry-left">
+                <span class="entry-title">LexisNexis</span>
+                <span class="entry-role">Lead &rarr; Principal Data Scientist</span>
+              </div>
+            </div>
+            <span class="entry-chevron"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 6 8 10 12 6"/></svg></span>
+          </button>
+          <div class="entry-body">
+            <div class="entry-details">
+              <ul>
+                <li>Core developer on <a href="https://www.lexisnexis.com/en-us/products/lexis-plus.page" target="_blank" rel="noopener">Lexis+</a>, the flagship legal research platform</li>
+                <li>Productionalized custom OCR and information extraction serving 300M docs daily</li>
+                <li>Production pipelines for training, fine-tuning, and deployment of GPT-based foundation models</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="entry">
+          <button class="entry-trigger" aria-expanded="false">
+            <div class="entry-trigger-content">
+              <div class="entry-left">
+                <span class="entry-title">Bloomberg L.P.</span>
+                <span class="entry-role">Data Scientist</span>
+              </div>
+            </div>
+            <span class="entry-chevron"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 6 8 10 12 6"/></svg></span>
+          </button>
+          <div class="entry-body">
+            <div class="entry-details">
+              <ul>
+                <li>NLP unsupervised clustering for mission-critical financial reporting</li>
+                <li>Supported web-scraping infrastructure and DL recommendation systems</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="entry">
+          <button class="entry-trigger" aria-expanded="false">
+            <div class="entry-trigger-content">
+              <div class="entry-left">
+                <span class="entry-title">GlaxoSmithKline R&amp;D</span>
+                <span class="entry-role">Data Scientist / Chemical Engineer</span>
+              </div>
+            </div>
+            <span class="entry-chevron"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 6 8 10 12 6"/></svg></span>
+          </button>
+          <div class="entry-body">
+            <div class="entry-details">
+              <ul>
+                <li>Deep learning anomaly detection for autonomous laboratory robotics</li>
+                <li>Reduced drug compound analysis resources 500x using CNNs and custom clustering</li>
+                <li>Automated solid dispensing and solubility testing robotics in pre-formulation drug discovery</li>
+                <li>Co-author, <a href="https://pubs.acs.org/doi/10.1021/acs.oprd.0c00411" target="_blank" rel="noopener">Organic Process Research &amp; Development (ACS)</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="entry">
+          <button class="entry-trigger" aria-expanded="false">
+            <div class="entry-trigger-content">
+              <div class="entry-left">
+                <span class="entry-title">Vertex Laboratories</span>
+                <span class="entry-role">Founder | CTO</span>
+              </div>
+            </div>
+            <span class="entry-chevron"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 6 8 10 12 6"/></svg></span>
+          </button>
+          <div class="entry-body">
+            <div class="entry-details">
+              <ul>
+                <li>ML R&amp;D consultancy, scaled from solo to 40+ engineers</li>
+                <li>Developed partnerships with Nvidia, AWS, and IBM</li>
+                <li>Production systems across CV, NLP, and time-series for seed-stage to enterprise clients</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="entry">
+          <button class="entry-trigger" aria-expanded="false">
+            <div class="entry-trigger-content">
+              <div class="entry-left">
+                <span class="entry-title">Orai App</span>
+                <span class="entry-role">First Engineer</span>
+              </div>
+            </div>
+            <span class="entry-chevron"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 6 8 10 12 6"/></svg></span>
+          </button>
+          <div class="entry-body">
+            <div class="entry-details">
+              <ul>
+                <li>Optimized novel speech processing application in Kaldi</li>
+                <li>Reduced server speech-to-text computation by 40x</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="entry">
+          <button class="entry-trigger" aria-expanded="false">
+            <div class="entry-trigger-content">
+              <div class="entry-left">
+                <span class="entry-title">Aether Technologies</span>
+                <span class="entry-role">Founder</span>
+              </div>
+            </div>
+            <span class="entry-chevron"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 6 8 10 12 6"/></svg></span>
+          </button>
+          <div class="entry-body">
+            <div class="entry-details">
+              <ul>
+                <li>Boutique AI career consulting born as a Covid-era passion project to give back to the ML community</li>
+                <li>53 individuals placed into senior+ ML positions through direct 1:1 mentorship</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Projects & Research -->
+    <section>
+      <div class="section-header">
+        <div class="section-label">Projects &amp; Research</div>
+        <button class="section-toggle" data-section="projects">Show all</button>
+      </div>
+      <div class="entry-list" data-accordion="projects">
+
+        <div class="entry">
+          <button class="entry-trigger" aria-expanded="false">
+            <div class="entry-trigger-content">
+              <div class="entry-left">
+                <span class="entry-title">SpaceX Hyperloop Competition</span>
+              </div>
+              <span class="entry-date">Top 5 of 1,200 Teams</span>
+            </div>
+            <span class="entry-chevron"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 6 8 10 12 6"/></svg></span>
+          </button>
+          <div class="entry-body">
+            <div class="entry-details">
+              <ul>
+                <li>Supervised 16 engineers designing custom IoT control systems for Drexel's hyperloop pod</li>
+                <li>Pod manufactured and tested at SpaceX HQ in Hawthorne with a <a href="https://drexel.edu/engineering/news-events/news/archive/2016/January/college-of-engineering-students-compete-in-spacex-hyperloop-competition/" target="_blank" rel="noopener">team of 110+</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="entry">
+          <button class="entry-trigger" aria-expanded="false">
+            <div class="entry-trigger-content">
+              <div class="entry-left">
+                <span class="entry-title">Lehigh University</span>
+                <span class="entry-role">Superoxide Dismutase Lab</span>
+              </div>
+              <span class="entry-date">Research</span>
+            </div>
+            <span class="entry-chevron"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 6 8 10 12 6"/></svg></span>
+          </button>
+          <div class="entry-body">
+            <div class="entry-details">
+              <ul>
+                <li>Research, synthesis, and assay of novel antioxidant compounds</li>
+                <li>Presented at the American Chemical Society Conference (2015)</li>
+                <li>Awarded Honorary ACS Membership</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="entry">
+          <button class="entry-trigger" aria-expanded="false">
+            <div class="entry-trigger-content">
+              <div class="entry-left">
+                <span class="entry-title">Nanocrystal Solar Cells</span>
+                <span class="entry-role">Fafarman Lab, Drexel</span>
+              </div>
+              <span class="entry-date">Research</span>
+            </div>
+            <span class="entry-chevron"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 6 8 10 12 6"/></svg></span>
+          </button>
+          <div class="entry-body">
+            <div class="entry-details">
+              <ul>
+                <li>Designed custom electronics to reduce noise in data, increasing capabilities by 20x</li>
+                <li>Used IoT and signal processing to reduce laboratory costs by 30%</li>
+                <li>Invented and fabricated novel laboratory equipment for solar cell fabrication (<a href="http://www.chemeng.drexel.edu/fafarmanresearchgroup/research/index.html" target="_blank" rel="noopener">Fafarman Group</a>)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="entry">
+          <button class="entry-trigger" aria-expanded="false">
+            <div class="entry-trigger-content">
+              <div class="entry-left">
+                <span class="entry-title">MakeMIT</span>
+              </div>
+              <span class="entry-date">Hackathon</span>
+            </div>
+            <span class="entry-chevron"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 6 8 10 12 6"/></svg></span>
+          </button>
+          <div class="entry-body">
+            <div class="entry-details">
+              <ul>
+                <li>GANs deployed on novel GPU-supporting hardware for autonomous visual data reporting</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="entry">
+          <button class="entry-trigger" aria-expanded="false">
+            <div class="entry-trigger-content">
+              <div class="entry-left">
+                <span class="entry-title">Blinc</span>
+              </div>
+              <span class="entry-date">Co-founder</span>
+            </div>
+            <span class="entry-chevron"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 6 8 10 12 6"/></svg></span>
+          </button>
+          <div class="entry-body">
+            <div class="entry-details">
+              <ul>
+                <li>Social discovery iOS app with custom DL recommendation systems</li>
+                <li>Cloud AI for OCR, sentiment analysis, and object recognition</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="entry">
+          <button class="entry-trigger" aria-expanded="false">
+            <div class="entry-trigger-content">
+              <div class="entry-left">
+                <span class="entry-title">3D-Printed Drone</span>
+              </div>
+              <span class="entry-date">Custom Build</span>
+            </div>
+            <span class="entry-chevron"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 6 8 10 12 6"/></svg></span>
+          </button>
+          <div class="entry-body">
+            <div class="entry-details">
+              <ul>
+                <li>Custom frame geometry, hand-soldered ESCs, PID tuning</li>
+                <li>Now used for photogrammetry and aerial mapping</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Patents -->
+    <section>
+      <div class="section-label">Patents</div>
+      <ul class="patent-list">
+        <li><a href="https://patents.google.com/patent/US20250259309A1/en" target="_blank" rel="noopener">Crowd Removal &amp; Automatic Focus for Images</a> <span class="patent-year">2025</span></li>
+        <li><a href="https://patents.google.com/patent/US20250254279A1/en" target="_blank" rel="noopener">Neural Augmented Color Mapping</a> <span class="patent-year">2025</span></li>
+        <li><a href="https://patents.google.com/patent/US20250245878A1/en" target="_blank" rel="noopener">Image Style Transfer</a> <span class="patent-year">2025</span></li>
+        <li><a href="https://patents.google.com/patent/US20250245884A1/en" target="_blank" rel="noopener">Facial Image Swapping</a> <span class="patent-year">2025</span></li>
+        <li><a href="https://patents.google.com/patent/US20250238898A1/en" target="_blank" rel="noopener">Deep Image Delighting</a> <span class="patent-year">2025</span></li>
       </ul>
-      <ul class="medium-block-grid-2 large-block-grid-2 small-block-grid-1">
-        <li>
-          <a href="pdfs/Ascent Portal.pdf#zoom=50&view=FitH" target="_blank">
-            <div class="project"> <img class="hide-for-medium-down" src="img/index/ascent thumb.png" alt="" /><img
-              class="show-for-medium-down" src="img/index/ascent thumb.png" alt="" />
-              <ul class="inline-list">
-                <li>User Research</li>
-                <li>UX/UI</li>
-                <li>Data Viz</li>
-                <li>Web App</li>
-              </ul>
-              <h4 class="title">Audio Sentiment Analysis web app</h4>
-              <p class="summary">Vertex Labs LLC &middot; Research Firm</p>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="pdfs/Aire UX.pdf#zoom=50&view=FitH" target="_blank">
-            <div class="project"> <img class="hide-for-medium-down" src="img/index/aire thumb.png" alt="" /><img
-              class="show-for-medium-down" src="img/index/aire thumb.png" alt="" />
-              <ul class="inline-list">
-                <li>Product Design</li>
-                <li>Market & User</li>
-                <li>Visual Design</li>
-              </ul>
-              <h4 class="title">DevOps web app for Data Scientists</h4>
-              <p class="summary">Vertex Labs LLC &middot; Research Firm</p>
-            </div>
-          </a>
-        </li>
+      <div class="patents-more">
+        <button class="patents-more-trigger" onclick="togglePendingPatents(this)">
+          <span class="chevron">&#9654;</span> and 8+ more filed
+        </button>
+        <div class="patents-more-content">
+          <ul class="patents-filed-list">
+            <li>Self-Maintaining Hierarchical Tool Routing for LLM Agent Ecosystems</li>
+            <li>Hierarchy-Aware Hard Negative Mining for Document Retrieval</li>
+            <li>Gated Multimodal Mixture of Experts for Document Classification</li>
+            <li>Auto-Calibration of Projection Systems in Feature Sparse Scenes</li>
+            <li>Dynamic Auto-Repainting for Lightsaber Animation</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Education -->
+    <section>
+      <div class="section-label">Education</div>
+      <p class="education-block">BS Chemical Engineering, <a href="https://drexel.edu" target="_blank" rel="noopener">Drexel University</a><br>MS Engineering Management (in progress)<br>Also studied chemistry, biology, philosophy, British literature, and jazz theory at Northampton Community College.</p>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Interests -->
+    <section>
+      <div class="section-label">Also</div>
+      <ul class="interests-list">
+        <li>Table tennis <span class="qualifier">&mdash; 1900-rated</span></li>
+        <li>Aerial survey <span class="qualifier">&mdash; thermal + LiDAR drone fleet for construction mapping</span></li>
+        <li>Slam poetry <span class="qualifier">&mdash; self-published author</span></li>
+        <li>Homelab <span class="qualifier">&mdash; self-hosted infrastructure, always running something</span></li>
+        <li>LLM fine-tuning</li>
+        <li>Parkour <span class="qualifier">&mdash; trained by the Yamakasi, former PKGen instructor</span></li>
+        <li>Motorcycles</li>
+        <li>3D printing</li>
       </ul>
-      <ul class="medium-block-grid-2 large-block-grid-3 small-block-grid-1">
-        <li>
-          <a href="https://www.holdmyramen.com/projects-and-places/mixing-things-up" target="_blank">
-            <div class="project"> <img class="hide-for-medium-down" src="img/index/vle thumb.png" alt="" /><img
-              class="show-for-medium-down" src="img/index/vle thumb.png" alt="" />
-              <ul class="inline-list">
-                <li>Modeling</li>
-                <li>Chemical Engineering</li>
-                <li>Matlab</li>
-              </ul>
-              <h4 class="title">Equilibrium Modeling</h4>
-              <p class="summary">Wrenn Group &middot; Research Lab</p>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="https://drexel.edu/engineering/news-events/news/archive/2016/January/college-of-engineering-students-compete-in-spacex-hyperloop-competition/" target="_blank">
-            <div class="project"> <img src="img/index/pod thumb.png" alt="" />
-              <ul class="inline-list">
-                <li>Engineering</li>
-                <li>Control Systems</li>
-                <li>Prototypes</li>
-              </ul>
-              <h4 class="title">Hyperloop Pod</h4>
-              <p class="summary">SpaceX Competition &middot; Prototype</p>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="https://devpost.com/software/digitaltrumpet" target="_blank">
-            <div class="project"> <img class="hide-for-medium-down" src="img/index/trumpet thumb.jpg" alt="" /><img
-              class="show-for-medium-down" src="img/index/trumpet thumb.jpg" alt="" />
-              <ul class="inline-list">
-                <li>iOS</li>
-                <li>Mobile</li>
-                <li>Hackathons</li>
-              </ul>
-              <h4 class="title">Digital Trumpet</h4>
-              <p class="summary">MakeMIT 2017&middot; Hackathon</p>
-            </div>
-          </a>
-        </li>
-      </ul>
-      <ul class="medium-block-grid-2 large-block-grid-2 small-block-grid-1">
-        <li>
-          <a href="http://www.chemeng.drexel.edu/fafarmanresearchgroup/research/index.html" target="_blank">
-            <div class="project"> <img class="hide-for-medium-down" src="img/index/solar thumb.png" alt="" /><img
-              class="show-for-medium-down" src="img/index/solar thumb.png" alt="" />
-              <ul class="inline-list">
-                <li>Research</li>
-                <li>Chemical Engineering</li>
-                <li>Spin Coating</li>
-              </ul>
-              <h4 class="title">Nanocrystal Solar Cells</h4>
-              <p class="summary">Fafarman Group &middot; Solar Lab</p>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="https:www.holdmyramen.com/projects-and-places/thats-intense" target="_blank">
-            <div class="project"> <img src="img/index/laser nav.jpg" alt="" class="hide-for-medium-down" /><img
-              class="show-for-medium-down" src="img/index/laser nav.jpg" alt="" />
-              <ul class="inline-list">
-                <li>Engineering</li>
-                <li>Robotics</li>
-                <li>Chemistry</li>
-              </ul>
-              <h4 class="title">Laser Navigation System</h4>
-              <p class="summary">SpaceX Competition &middot; Prototype</p>
-            </div>
-          </a>
-        </li>
-      </ul>
-      <ul class="medium-block-grid-2 large-block-grid-3 small-block-grid-1">
-        <li>
-          <a href="https://www.holdmyramen.com/projects-and-places/lehigh-hacks-2016" target="_blank">
-            <div class="project"> <img class="hide-for-medium-down" src="img/index/autonomous car.png" alt="" /><img
-              class="show-for-medium-down" src="img/index/autonomous car.png" alt="" />
-              <ul class="inline-list">
-                <li>Hackathon</li>
-                <li>Engineering</li>
-                <li>Robotics</li>
-              </ul>
-              <h4 class="title">Autonomous RPi Car</h4>
-              <p class="summary">HMR LLC &middot; Engineering Blog</p>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="https://www.holdmyramen.com/projects-and-places/droning-on" target="_blank">
-            <div class="project"> <img class="hide-for-medium-down" src="img/index/DroningOn1.jpg" alt="" /><img
-              class="show-for-medium-down" src="img/index/DroningOn1.jpg" alt="" />
-              <ul class="inline-list">
-                <li>3D Printing</li>
-                <li>Robotics</li>
-                <li>Engineering</li>
-              </ul>
-              <h4 class="title">3D Printed Drone</h4>
-              <p class="summary">HMR LLC &middot; Engineering Blog</p>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="https://www.youtube.com/watch?v=BcjyvEZtgAY" target="_blank">
-            <div class="project"> <img src="img/index/light switch.jpg" alt="" />
-              <ul class="inline-list">
-                <li>Radio</li>
-                <li>RPi</li>
-                <li>Electrical</li>
-              </ul>
-              <h4 class="title">Wireless Light Switch</h4>
-              <p class="summary">HMR LLC &middot; Engineering Blog</p>
-            </div>
-          </a>
-        </li>
-      </ul>
-      <ul class="medium-block-grid-2 large-block-grid-2 small-block-grid-1">
-        <li>
-          <a href="https://www.holdmyramen.com/projects-and-places/cats-strings-and-things" target="_blank">
-            <div class="project"> <img class="hide-for-medium-down" src="img/index/arduino cat alarm.jpg" alt="" /><img
-              class="show-for-medium-down" src="img/index/arduino cat alarm.jpg" alt="" />
-              <ul class="inline-list">
-                <li>Arduino</li>
-                <li>Automation</li>
-                <li>Cats</li>
-              </ul>
-              <h4 class="title">Arduino Cat Alarm</h4>
-              <p class="summary">HMR LLC &middot; Engineering Blog</p>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="https://www.holdmyramen.com/projects-and-places/mixing-things-up" target="_blank">
-            <div class="project"> <img class="hide-for-medium-down" src="img/index/dynamic systems modeling.png" alt="" /><img
-              class="show-for-medium-down" src="img/index/dynamic systems modeling.png" alt="" />
-              <ul class="inline-list">
-                <li>Engineering</li>
-                <li>Chemistry</li>
-                <li>Matlab</li>
-              </ul>
-              <h4 class="title">Dynamic Systems Modeling</h4>
-              <p class="summary">HMR LLC &middot; Engineering Blog</p>
-            </div>
-          </a>
-        </li>
-      </ul>
-    </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Elsewhere -->
+    <section class="elsewhere">
+      <div class="section-label">Elsewhere</div>
+      <div class="elsewhere-links">
+        <a href="https://www.linkedin.com/in/davidnjuboor/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/DJuboor" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </section>
+
+    <footer class="footer">&copy; 2026 David N. Juboor</footer>
+
   </div>
-  <div class="contain-to-grid text-center" id="footer">
-    <div class="row" id="social">
-      <ul class="small-block-grid-3 medium-block-grid-3">
-        <li class="fa-stack fa-lg"><a href="https://github.com/DJuboor"><i class="fa fa-circle fa-stack-2x"></i><i
-        class="fab fa-github fa-stack-1x fa-inverse"></i></a></li>
-        <li class="fa-stack fa-lg"><a href="https://www.linkedin.com/in/davidnjuboor/" target="_blank"><i class="fa fa-circle fa-stack-2x"></i><i
-        class="fab fa-linkedin fa-stack-1x fa-inverse"></i></a></li>
-        <li class="fa-stack fa-lg"><a href="pdfs/D-Juboor_ML_Architect-2019.pdf#zoom=50&view=FitH" target="_blank"><i class="fa fa-circle fa-stack-2x"></i><i
-        class="fa fa-file-alt fa-stack-1x fa-inverse"></i></a></li>
-      </ul>
-    </div>
-    <div class="copyright">
-      <br> Copyright &copy; 2019 David N Juboor All Rights Reserved.
-      <br>
-    </div>
-  </div>
-  <script src="js/foundation.min.js"></script>
-  <script src="js/vendor/jquery.smooth-scroll.min.js"></script>
-  <script src="js/app.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    requestAnimationFrame(function() { document.body.classList.add('loaded'); });
+  });
+
+  (function() {
+    var toggle = document.querySelector('.theme-toggle');
+    var root = document.documentElement;
+    var stored = localStorage.getItem('theme');
+    if (stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      root.setAttribute('data-theme', 'dark');
+    }
+    toggle.addEventListener('click', function() {
+      var isDark = root.getAttribute('data-theme') === 'dark';
+      if (isDark) { root.removeAttribute('data-theme'); localStorage.setItem('theme', 'light'); }
+      else { root.setAttribute('data-theme', 'dark'); localStorage.setItem('theme', 'dark'); }
+    });
+  })();
+
+  (function() {
+    function openEntry(entry) {
+      if (entry.classList.contains('open')) return;
+      entry.classList.add('open');
+      var trigger = entry.querySelector('.entry-trigger');
+      var body = entry.querySelector('.entry-body');
+      if (trigger) trigger.setAttribute('aria-expanded', 'true');
+      body.style.height = body.scrollHeight + 'px';
+      var onEnd = function() { body.style.height = 'auto'; body.removeEventListener('transitionend', onEnd); };
+      body.addEventListener('transitionend', onEnd);
+    }
+    function closeEntry(entry) {
+      if (!entry.classList.contains('open')) return;
+      var body = entry.querySelector('.entry-body');
+      var trigger = entry.querySelector('.entry-trigger');
+      body.style.height = body.scrollHeight + 'px';
+      body.offsetHeight;
+      entry.classList.remove('open');
+      if (trigger) trigger.setAttribute('aria-expanded', 'false');
+      body.style.height = '0';
+    }
+    function closeOthersInSection(accordion, exceptEntry) {
+      var entries = accordion.querySelectorAll('.entry');
+      for (var i = 0; i < entries.length; i++) { if (entries[i] !== exceptEntry) closeEntry(entries[i]); }
+    }
+    var allEntries = document.querySelectorAll('.entry-list .entry');
+    for (var i = 0; i < allEntries.length; i++) {
+      (function(entry) {
+        entry.querySelector('.entry-trigger').addEventListener('click', function() {
+          var accordion = entry.closest('.entry-list');
+          if (entry.classList.contains('open')) { closeEntry(entry); }
+          else {
+            var allOpen = true;
+            var entries = accordion.querySelectorAll('.entry');
+            for (var j = 0; j < entries.length; j++) { if (!entries[j].classList.contains('open') && entries[j] !== entry) { allOpen = false; break; } }
+            if (!allOpen) closeOthersInSection(accordion, entry);
+            openEntry(entry);
+          }
+        });
+      })(allEntries[i]);
+    }
+    var toggleBtns = document.querySelectorAll('.section-toggle');
+    for (var t = 0; t < toggleBtns.length; t++) {
+      (function(btn) {
+        btn.addEventListener('click', function() {
+          var sectionName = btn.getAttribute('data-section');
+          var accordion = document.querySelector('.entry-list[data-accordion="' + sectionName + '"]');
+          var entries = accordion.querySelectorAll('.entry');
+          if (btn.textContent === 'Show all') {
+            for (var i = 0; i < entries.length; i++) openEntry(entries[i]);
+            btn.textContent = 'Hide all';
+          } else {
+            for (var i = 0; i < entries.length; i++) closeEntry(entries[i]);
+            btn.textContent = 'Show all';
+          }
+        });
+      })(toggleBtns[t]);
+    }
+  })();
+
+  function togglePendingPatents(btn) {
+    var content = btn.nextElementSibling;
+    btn.classList.toggle('open');
+    if (btn.classList.contains('open')) {
+      content.style.maxHeight = content.scrollHeight + 'px';
+    } else {
+      content.style.maxHeight = '0';
+    }
+  }
+</script>
 </body>
 </html>
