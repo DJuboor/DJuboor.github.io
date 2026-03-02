@@ -71,6 +71,8 @@
   .interests-list { list-style: none; padding: 0; }
   .interests-list li { font-size: 0.875rem; color: var(--secondary); line-height: 1.8; }
   .interests-list .qualifier { color: var(--border); }
+  .interests-list .qualifier a { color: var(--secondary); text-decoration: none; border-bottom: 1px solid var(--border); transition: border-color 0.2s ease; }
+  .interests-list .qualifier a:hover { border-color: var(--text); }
   .elsewhere { margin-top: 0; }
   .elsewhere-links { display: flex; gap: 1.5rem; margin-top: 0.375rem; }
   .elsewhere-links a { font-size: 0.9375rem; font-weight: 400; color: var(--text); text-decoration: none; position: relative; }
@@ -510,8 +512,8 @@
         <li>Slam poetry <span class="qualifier">&mdash; self-published author</span></li>
         <li>Homelab <span class="qualifier">&mdash; self-hosted infrastructure, always running something</span></li>
         <li>Parkour <span class="qualifier">&mdash; trained by the Yamakasi, former PKGen instructor</span></li>
-        <li>Motorcycles</li>
-        <li>3D printing</li>
+        <li>Motorcycles <span class="qualifier">&mdash; <a href="https://www.motoguzzi.com/us_EN/models/v7/" target="_blank" rel="noopener">Moto Guzzi V7 Stone</a>, Ducati, Harley</span></li>
+        <li>3D printing <span class="qualifier">&mdash; just getting started!</span></li>
       </ul>
     </section>
 
