@@ -77,8 +77,8 @@
   .interests-list { list-style: none; padding: 0; }
   .interests-list li { font-size: 0.875rem; color: var(--secondary); line-height: 1.8; }
   .interests-list .qualifier { color: var(--secondary); opacity: 0.7; }
-  .interests-list .qualifier a { color: var(--secondary); text-decoration: none; border-bottom: 1px solid var(--border); transition: border-color 0.2s ease; }
-  .interests-list .qualifier a:hover { border-color: var(--text); }
+  .interests-list .qualifier a { color: var(--secondary); opacity: 1; text-decoration: underline; text-decoration-style: dotted; text-decoration-color: var(--secondary); text-underline-offset: 3px; text-decoration-thickness: 1.5px; transition: text-decoration-color 0.2s ease; }
+  .interests-list .qualifier a:hover { text-decoration-color: var(--text); }
   .elsewhere { margin-top: 0; }
   .elsewhere-links { display: flex; gap: 1.5rem; margin-top: 0.375rem; }
   .elsewhere-links a { font-size: 0.9375rem; font-weight: 400; color: var(--text); text-decoration: none; position: relative; }
@@ -105,7 +105,7 @@
 
     <header class="header">
       <h1>David N. Juboor</h1>
-      <p class="bio">I'm a hyper-curious ML engineer who keeps getting pulled into hard problems across fields I didn't start in. Pharma, finance, legal, entertainment, robotics, research &mdash; and often more than one at a time.</p>
+      <p class="bio">I'm a hyper-curious ML engineer who keeps getting pulled into hard problems across fields I didn't start in. Pharma, finance, legal, entertainment, robotics, research &mdash; often more than one at a time.</p>
     </header>
 
     <div class="divider"></div>
@@ -513,13 +513,13 @@
     <section>
       <div class="section-label">Also</div>
       <ul class="interests-list">
-        <li>Table tennis <span class="qualifier">&mdash; 1900-rated club casual player</span></li>
-        <li>Music <span class="qualifier">&mdash; <a href="https://www.youtube.com/watch?v=gvCTPVv2NOo" target="_blank" rel="noopener">jazz</a>, <a href="https://open.spotify.com/playlist/1Bsp6s2myOsd0Pm2uTDK7I?si=75555c8077c84ee0" target="_blank" rel="noopener">prog metal</a>, <a href="https://open.spotify.com/playlist/292DNaXtSTM32wk3ogVAbH?si=9910bf63767d4c20" target="_blank" rel="noopener">campfire</a>, and <a href="https://open.spotify.com/playlist/7DsYHgjhVhEvTNuXrPIAhL?si=7f3ca5030a56434d" target="_blank" rel="noopener">chill</a></span></li>
-        <li>Photogrammetry <span class="qualifier">&mdash; <a href="https://www.dji.com/mavic-3-pro" target="_blank" rel="noopener">DJI Mavic</a> fleet + custom printed FPV microdrones</span></li>
-        <li>Slam poetry <span class="qualifier">&mdash; <a href="https://hellopoetry.com/@DavidNJuboor" target="_blank" rel="noopener">published author</a></span></li>
-        <li>Homelab <span class="qualifier">&mdash; self-hosted infrastructure, always running something</span></li>
+        <li>Table tennis <span class="qualifier">&mdash; 1900-rated club player</span></li>
+        <li>Music <span class="qualifier">&mdash; <a href="https://www.youtube.com/watch?v=gvCTPVv2NOo" target="_blank" rel="noopener">jazz</a>, <a href="https://open.spotify.com/playlist/1Bsp6s2myOsd0Pm2uTDK7I?si=75555c8077c84ee0" target="_blank" rel="noopener">prog metal</a>, <a href="https://open.spotify.com/playlist/292DNaXtSTM32wk3ogVAbH?si=9910bf63767d4c20" target="_blank" rel="noopener">campfire</a>, <a href="https://open.spotify.com/playlist/7DsYHgjhVhEvTNuXrPIAhL?si=7f3ca5030a56434d" target="_blank" rel="noopener">chill</a></span></li>
+        <li>Photogrammetry <span class="qualifier">&mdash; <a href="https://enterprise.dji.com/matrice-4-series" target="_blank" rel="noopener">DJI Matrice 4T</a> fleet + custom FPV builds</span></li>
+        <li>Homelab <span class="qualifier">&mdash; self-hosted everything, <a href="https://www.nvidia.com/en-us/products/workstations/dgx-spark/" target="_blank" rel="noopener">DGX</a> cluster node and all</span></li>
         <li>Parkour <span class="qualifier">&mdash; Yamakasi student, former <a href="https://parkourgenerations.com/" target="_blank" rel="noopener">PKGen</a> instructor</span></li>
         <li>Motorcycles <span class="qualifier">&mdash; <a href="https://www.motoguzzi.com/us_EN/models/v7/" target="_blank" rel="noopener">Moto Guzzi V7 Stone</a>, Ducati, Harley</span></li>
+        <li>Slam poetry <span class="qualifier">&mdash; <a href="https://hellopoetry.com/@AFKforLoL/poems" target="_blank" rel="noopener">published poet</a></span></li>
         <li>3D printing <span class="qualifier">&mdash; dabbling ;)</span></li>
       </ul>
     </section>
@@ -529,7 +529,7 @@
     <!-- Home -->
     <section>
       <div class="section-label">Home</div>
-      <p class="home-list"><a href="https://maps.app.goo.gl/mQJwYNfMUDi83enH6" target="_blank" rel="noopener">Philadelphia</a> &middot; <a href="https://maps.app.goo.gl/b5SjKzcb2LWF1pK86" target="_blank" rel="noopener">San Pancho</a> &middot; <a href="https://maps.app.goo.gl/QtiwM67H7CFU3r6P6" target="_blank" rel="noopener">NYC</a> &middot; <a href="https://maps.app.goo.gl/jF6K4bbZtn64jWBi6" target="_blank" rel="noopener">Celebration</a> &middot; <a href="https://maps.app.goo.gl/8Rhffx1VwcHrJqFC6" target="_blank" rel="noopener">Johnson City</a> &middot; <a href="https://maps.app.goo.gl/NF2f2vRWkRsxjMqe9" target="_blank" rel="noopener">Valencia (ES)</a> &middot; <a href="https://maps.app.goo.gl/ZekDzBo137dSqG4a8" target="_blank" rel="noopener">Los Angeles</a></p>
+      <p class="home-list"><a href="https://maps.app.goo.gl/mQJwYNfMUDi83enH6" target="_blank" rel="noopener">Philadelphia</a> &middot; <a href="https://maps.app.goo.gl/b5SjKzcb2LWF1pK86" target="_blank" rel="noopener">San Pancho (MX)</a> &middot; <a href="https://maps.app.goo.gl/QtiwM67H7CFU3r6P6" target="_blank" rel="noopener">NYC</a> &middot; <a href="https://maps.app.goo.gl/jF6K4bbZtn64jWBi6" target="_blank" rel="noopener">Celebration</a> &middot; <a href="https://maps.app.goo.gl/8Rhffx1VwcHrJqFC6" target="_blank" rel="noopener">Johnson City</a> &middot; <a href="https://maps.app.goo.gl/NF2f2vRWkRsxjMqe9" target="_blank" rel="noopener">Valencia (ES)</a> &middot; <a href="https://maps.app.goo.gl/ZekDzBo137dSqG4a8" target="_blank" rel="noopener">Los Angeles</a></p>
     </section>
 
     <div class="divider"></div>
