@@ -34,6 +34,14 @@
   .section-toggle { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 0.6875rem; font-weight: 400; color: var(--secondary); background: none; border: none; cursor: pointer; padding: 0; position: relative; letter-spacing: 0.02em; }
   .section-toggle::after { content: ''; position: absolute; bottom: -1px; left: 0; width: 0; height: 1px; background-color: var(--secondary); transition: width 0.25s ease; }
   .section-toggle:hover::after { width: 100%; }
+  .section-controls { display: flex; align-items: baseline; gap: 1.25rem; }
+  .lens-group { display: inline-flex; align-items: baseline; gap: 0.4rem; }
+  .lens-sep { font-size: 0.6875rem; color: var(--border); }
+  .lens-option { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 0.6875rem; font-weight: 400; color: var(--secondary); background: none; border: none; cursor: pointer; padding: 0; position: relative; letter-spacing: 0.02em; }
+  .lens-option::after { content: ''; position: absolute; bottom: -1px; left: 0; width: 0; height: 1px; background-color: var(--secondary); transition: width 0.25s ease; }
+  .lens-option:hover::after { width: 100%; }
+  .lens-option.active { color: var(--text); }
+  .paper-note { display: block; font-size: 0.75rem; color: var(--secondary); opacity: 0.75; margin-top: 0.0625rem; }
   .entry-list .entry { border-bottom: 1px solid var(--border); }
   .entry-list .entry:first-child { border-top: 1px solid var(--border); }
   .entry-trigger { display: flex; align-items: center; width: 100%; padding: 0.75rem 0; background: none; border: none; cursor: pointer; text-align: left; font-family: inherit; color: inherit; gap: 0; }
@@ -114,7 +122,12 @@
     <section>
       <div class="section-header">
         <div class="section-label">Experience</div>
-        <button class="section-toggle" data-section="experience">Show all</button>
+        <div class="section-controls">
+          <span class="lens-group" role="group" aria-label="Experience lens">
+            <button class="lens-option active" data-lens="all">All</button><span class="lens-sep">&middot;</span><button class="lens-option" data-lens="builder">Builder</button><span class="lens-sep">&middot;</span><button class="lens-option" data-lens="leader">Leader</button>
+          </span>
+          <button class="section-toggle" data-section="experience">Show all</button>
+        </div>
       </div>
       <div class="entry-list" data-accordion="experience">
 
@@ -131,9 +144,12 @@
           <div class="entry-body">
             <div class="entry-details">
               <ul>
-                <li>ML lead for <a href="https://b17news.com/disney-employees-describe-its-internal-ai-strategy-from-disneygpt-to-a-new-jarvis-tool-in-the-works/" target="_blank" rel="noopener">JARVIS</a> — Imagineering's agentic AI platform, built on 70 years of institutional knowledge</li>
-                <li>Org-wide AI adoption across thousands of Imagineers — agentic workflows, MCP tooling, search systems, and large-scale information extraction</li>
-                <li>Cross-org ML strategy across Imagineering, Disney Research, and Studios</li>
+                <li>ML lead for <a href="https://b17news.com/disney-employees-describe-its-internal-ai-strategy-from-disneygpt-to-a-new-jarvis-tool-in-the-works/" target="_blank" rel="noopener">JARVIS</a> — Imagineering's agentic AI platform, ~10,000 daily users</li>
+                <li data-lens="builder">Self-hosted the model stack — 16 H100s, fine-tuned open models, vLLM + LiteLLM</li>
+                <li data-lens="builder">Invented self-maintaining tool routing for LLM agents — patent filed</li>
+                <li data-lens="builder">Multi-agent architectures and MCP integrations across hundreds of tools</li>
+                <li data-lens="leader">Team of 6; distilled models saving ~$12M/yr in inference</li>
+                <li data-lens="leader">Cross-org ML strategy across Imagineering, Disney Research, and Studios</li>
               </ul>
             </div>
           </div>
@@ -152,10 +168,12 @@
           <div class="entry-body">
             <div class="entry-details">
               <ul>
-                <li>Built and managed the ML engineering portfolio for a $100MM+/yr business segment</li>
-                <li>Managed up to 12 direct reports, ~150 in-house and third-party annotation staff</li>
-                <li>Reduced cloud costs ~90% and increased deploy speed 20x via serverless migration</li>
-                <li>Shipped 15+ products and secured &gt;10 patents for novel ML systems</li>
+                <li>Founding ML engineer for PhotoPass — 0 &rarr; 15+ products, $16M/yr in ML-driven revenue</li>
+                <li data-lens="builder"><a href="https://www.disneytouristblog.com/automated-cameras-mickey-minnie-meet-magic-kingdom/" target="_blank" rel="noopener">Automated character photography</a> across every US and EU park — 20M+ images/day</li>
+                <li data-lens="builder">Anticipatory capture — predicts the shot 1.5s before it happens, 15 &rarr; 60 FPS</li>
+                <li data-lens="leader">Grew the function from 1 to a 20-person org</li>
+                <li data-lens="leader">Photographers displaced by the automation became its 40-person annotation team</li>
+                <li>Golden datasets behind Web Slingers: A Spider-Man Adventure</li>
               </ul>
             </div>
           </div>
@@ -196,8 +214,9 @@
             <div class="entry-details">
               <ul>
                 <li>Mortgage procurement automation for the top 10 global banks</li>
-                <li>Led deep learning team of 8, took production performance from 41% to 92%</li>
-                <li>Reduced overhead costs 30x via serverless architectures</li>
+                <li data-lens="leader">Grew the applied deep learning team 1 &rarr; 12</li>
+                <li data-lens="builder">Took production performance from 41% to 92%</li>
+                <li data-lens="builder">Reduced overhead costs 30x via serverless architectures</li>
                 <li>Increased NLP transformer performance via novel pruning and ensemble methods</li>
               </ul>
             </div>
@@ -209,7 +228,7 @@
             <div class="entry-trigger-content">
               <div class="entry-left">
                 <span class="entry-title">LexisNexis</span>
-                <span class="entry-role">Lead &rarr; Principal Data Scientist</span>
+                <span class="entry-role">Senior &rarr; Principal Data Scientist</span>
               </div>
             </div>
             <span class="entry-chevron"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 6 8 10 12 6"/></svg></span>
@@ -250,7 +269,7 @@
             <div class="entry-trigger-content">
               <div class="entry-left">
                 <span class="entry-title">GlaxoSmithKline R&amp;D</span>
-                <span class="entry-role">Data Scientist / Chemical Engineer</span>
+                <span class="entry-role">Chemical Automation Engineer</span>
               </div>
             </div>
             <span class="entry-chevron"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 6 8 10 12 6"/></svg></span>
@@ -261,7 +280,7 @@
                 <li>Deep learning anomaly detection for autonomous laboratory robotics</li>
                 <li>Reduced drug compound analysis resources 500x using CNNs and custom clustering</li>
                 <li>Automated solid dispensing and solubility testing robotics in pre-formulation drug discovery</li>
-                <li>Co-author, <a href="https://pubs.acs.org/doi/10.1021/acs.oprd.0c00411" target="_blank" rel="noopener">Organic Process Research &amp; Development (ACS)</a></li>
+                <li>Research contributor, <a href="https://pubs.acs.org/doi/10.1021/acs.oprd.0c00411" target="_blank" rel="noopener">High-Throughput Automated Powder Dispensing Platforms (OPRD, ACS)</a></li>
               </ul>
             </div>
           </div>
@@ -280,7 +299,7 @@
           <div class="entry-body">
             <div class="entry-details">
               <ul>
-                <li>ML R&amp;D consultancy, scaled from solo to 40+ engineers</li>
+                <li>ML R&amp;D consultancy, scaled from solo to 40+ contractors</li>
                 <li>Developed partnerships with Nvidia, AWS, and IBM</li>
                 <li>Production systems across CV, NLP, and time-series for seed-stage to enterprise clients</li>
               </ul>
@@ -324,6 +343,97 @@
               <ul>
                 <li>Boutique AI career consulting born as a Covid-era passion project to give back to the ML community</li>
                 <li>53 individuals placed into senior+ ML positions through direct 1:1 mentorship</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Lab -->
+    <section>
+      <div class="section-header">
+        <div class="section-label">Lab</div>
+        <button class="section-toggle" data-section="lab">Show all</button>
+      </div>
+      <div class="entry-list" data-accordion="lab">
+
+        <div class="entry">
+          <button class="entry-trigger" aria-expanded="false">
+            <div class="entry-trigger-content">
+              <div class="entry-left">
+                <span class="entry-title">OpenAnnotate</span>
+              </div>
+              <span class="entry-date">Open Source</span>
+            </div>
+            <span class="entry-chevron"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 6 8 10 12 6"/></svg></span>
+          </button>
+          <div class="entry-body">
+            <div class="entry-details">
+              <ul>
+                <li>Open-source annotation platform &mdash; 14 modalities, bounding boxes to LLM RLHF</li>
+                <li>SAM + GroundingDINO assisted labeling, SSO/RBAC, full Docker stack</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="entry">
+          <button class="entry-trigger" aria-expanded="false">
+            <div class="entry-trigger-content">
+              <div class="entry-left">
+                <span class="entry-title">Chim-Chim</span>
+              </div>
+              <span class="entry-date">Robotics</span>
+            </div>
+            <span class="entry-chevron"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 6 8 10 12 6"/></svg></span>
+          </button>
+          <div class="entry-body">
+            <div class="entry-details">
+              <ul>
+                <li>45-DOF animatronic of the Speed Racer chimp</li>
+                <li>Maya rig &rarr; URDF/USD &rarr; Isaac Sim RL &rarr; ONNX, C++17 real-time firmware</li>
+                <li>Sim-to-real puppeteering from a Steam Deck</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="entry">
+          <button class="entry-trigger" aria-expanded="false">
+            <div class="entry-trigger-content">
+              <div class="entry-left">
+                <span class="entry-title">Clay Code</span>
+              </div>
+              <span class="entry-date">Agent Tooling</span>
+            </div>
+            <span class="entry-chevron"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 6 8 10 12 6"/></svg></span>
+          </button>
+          <div class="entry-body">
+            <div class="entry-details">
+              <ul>
+                <li>Isometric virtual office for AI coding agents &mdash; tmux sessions rendered as characters</li>
+                <li>Three.js + FastAPI/WebSockets, live agent state detection, in-scene terminals</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="entry">
+          <button class="entry-trigger" aria-expanded="false">
+            <div class="entry-trigger-content">
+              <div class="entry-left">
+                <span class="entry-title">PrismML 1-Bit Quantization</span>
+              </div>
+              <span class="entry-date">Research</span>
+            </div>
+            <span class="entry-chevron"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 6 8 10 12 6"/></svg></span>
+          </button>
+          <div class="entry-body">
+            <div class="entry-details">
+              <ul>
+                <li>Independently replicating PrismML's closed intelligence-density results</li>
+                <li>MoLoRA routing, STE-QAT, speculative decoding, bit-flip continual learning</li>
               </ul>
             </div>
           </div>
@@ -429,8 +539,8 @@
           <button class="entry-trigger" aria-expanded="false">
             <div class="entry-trigger-content">
               <div class="entry-left">
-                <span class="entry-title">Lehigh University</span>
-                <span class="entry-role">Superoxide Dismutase Lab</span>
+                <span class="entry-title">Superoxide Dismutase Mimetics</span>
+                <span class="entry-role">Northampton CC &times; Lehigh Bio Lab</span>
               </div>
               <span class="entry-date">Research</span>
             </div>
@@ -439,7 +549,7 @@
           <div class="entry-body">
             <div class="entry-details">
               <ul>
-                <li>Research, synthesis, and assay of novel antioxidant compounds</li>
+                <li>Synthesized and assayed novel SOD-mimetic compounds (PABA + bacitracin ligands)</li>
                 <li>Presented at the American Chemical Society Conference (2015)</li>
                 <li>Awarded Honorary ACS Membership</li>
               </ul>
@@ -473,6 +583,18 @@
 
     <div class="divider"></div>
 
+    <!-- Papers -->
+    <section>
+      <div class="section-label">Papers</div>
+      <ul class="patent-list">
+        <li><span><a href="papers/look-sharp-cartographic-vqa.pdf" target="_blank" rel="noopener">Look Sharp: Resolution Scaling for Cartographic VQA</a> <span class="paper-note">SOTA on the FRIEDA benchmark &mdash; 44.0% vs 38.2% published best</span></span> <span class="patent-year">2026</span></li>
+        <li><span><a href="papers/decoding-latent-spaces.pdf" target="_blank" rel="noopener">Decoding Latent Spaces: LLM vs Encoder-Only Embeddings</a> <span class="paper-note">MTEB retrieval study, with Drexel faculty</span></span> <span class="patent-year">2024</span></li>
+        <li><span><a href="https://pubs.acs.org/doi/10.1021/acs.oprd.0c00411" target="_blank" rel="noopener">High-Throughput Automated Powder Dispensing Platforms (OPRD, ACS)</a> <span class="paper-note">research contributor &mdash; GSK dispensing-automation lab</span></span> <span class="patent-year">2020</span></li>
+      </ul>
+    </section>
+
+    <div class="divider"></div>
+
     <!-- Patents -->
     <section>
       <div class="section-label">Patents</div>
@@ -485,15 +607,15 @@
       </ul>
       <div class="patents-more">
         <button class="patents-more-trigger" onclick="togglePendingPatents(this)">
-          <span class="chevron">&#9654;</span> and 8+ more filed
+          <span class="chevron">&#9654;</span> and more filed
         </button>
         <div class="patents-more-content">
           <ul class="patents-filed-list">
             <li>Self-Maintaining Hierarchical Tool Routing for LLM Agent Ecosystems</li>
             <li>Hierarchy-Aware Hard Negative Mining for Document Retrieval</li>
             <li>Gated Multimodal Mixture of Experts for Document Classification</li>
+            <li>Context-Restricted Prompt Routing for Structured Multimodal Information Extraction</li>
             <li>Auto-Calibration of Projection Systems in Feature Sparse Scenes</li>
-            <li>Dynamic Auto-Repainting for Lightsaber Animation</li>
           </ul>
         </div>
       </div>
@@ -504,7 +626,7 @@
     <!-- Education -->
     <section>
       <div class="section-label">Education</div>
-      <p class="education-block">BSE Chemical Engineering, <a href="https://drexel.edu" target="_blank" rel="noopener">Drexel University</a><br>MSE Engineering Management (in progress)<br>Additional studies in chemistry, biology, philosophy, literature, and jazz theory.</p>
+      <p class="education-block">BSE Chemical Engineering, <a href="https://drexel.edu" target="_blank" rel="noopener">Drexel University</a><br>Additional studies in chemistry, biology, philosophy, literature, and jazz theory.</p>
     </section>
 
     <div class="divider"></div>
@@ -516,7 +638,7 @@
         <li>Table tennis <span class="qualifier">&mdash; 1900-rated club-casual player</span></li>
         <li>Music <span class="qualifier">&mdash; <a href="https://open.spotify.com/playlist/1Bsp6s2myOsd0Pm2uTDK7I?si=75555c8077c84ee0" target="_blank" rel="noopener">prog metal</a>, <a href="https://www.youtube.com/watch?v=gvCTPVv2NOo" target="_blank" rel="noopener">jazz</a>, <a href="https://open.spotify.com/playlist/292DNaXtSTM32wk3ogVAbH?si=9910bf63767d4c20" target="_blank" rel="noopener">campfire</a>, <a href="https://open.spotify.com/playlist/7DsYHgjhVhEvTNuXrPIAhL?si=7f3ca5030a56434d" target="_blank" rel="noopener">chill</a></span></li>
         <li>Photogrammetry <span class="qualifier">&mdash; <a href="https://enterprise.dji.com/matrice-4-series" target="_blank" rel="noopener">DJI Matrice 4T</a> fleet + custom FPV builds</span></li>
-        <li>Homelab <span class="qualifier">&mdash; self-hosted everything, <a href="https://www.nvidia.com/en-us/products/workstations/dgx-spark/" target="_blank" rel="noopener">DGX</a> cluster node and all</span></li>
+        <li>Homelab <span class="qualifier">&mdash; self-hosted everything: k3s, OPNsense, and a <a href="https://www.nvidia.com/en-us/products/workstations/dgx-spark/" target="_blank" rel="noopener">DGX</a> cluster node</span></li>
         <li>Parkour <span class="qualifier">&mdash; Yamakasi student, former <a href="https://parkourgenerations.com/" target="_blank" rel="noopener">PKGen</a> instructor</span></li>
         <li>Motorcycles <span class="qualifier">&mdash; <a href="https://www.motoguzzi.com/us_EN/models/v7/" target="_blank" rel="noopener">Moto Guzzi V7 Stone</a>, Ducati, Harley</span></li>
         <li>Slam poetry <span class="qualifier">&mdash; <a href="https://hellopoetry.com/@AFKforLoL/poems" target="_blank" rel="noopener">casual</a> open-mic slam poet</span></li>
@@ -622,6 +744,32 @@
           }
         });
       })(toggleBtns[t]);
+    }
+  })();
+
+  (function() {
+    var group = document.querySelector('.lens-group');
+    if (!group) return;
+    var buttons = group.querySelectorAll('.lens-option');
+    var accordion = document.querySelector('.entry-list[data-accordion="experience"]');
+    function applyLens(lens) {
+      var items = accordion.querySelectorAll('.entry-details li');
+      for (var i = 0; i < items.length; i++) {
+        var tag = items[i].getAttribute('data-lens');
+        var show = lens === 'all' || !tag || tag === lens;
+        items[i].style.display = show ? '' : 'none';
+      }
+      var openBodies = accordion.querySelectorAll('.entry.open .entry-body');
+      for (var j = 0; j < openBodies.length; j++) { openBodies[j].style.height = 'auto'; }
+    }
+    for (var b = 0; b < buttons.length; b++) {
+      (function(btn) {
+        btn.addEventListener('click', function() {
+          for (var k = 0; k < buttons.length; k++) buttons[k].classList.remove('active');
+          btn.classList.add('active');
+          applyLens(btn.getAttribute('data-lens'));
+        });
+      })(buttons[b]);
     }
   })();
 
