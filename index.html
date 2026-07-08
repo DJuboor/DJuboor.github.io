@@ -41,7 +41,7 @@
   .lens-option::after { content: ''; position: absolute; bottom: -1px; left: 0; width: 0; height: 1px; background-color: var(--secondary); transition: width 0.25s ease; }
   .lens-option:hover::after { width: 100%; }
   .lens-option.active { color: var(--text); }
-  .paper-note { font-size: 0.75rem; color: var(--secondary); opacity: 0.75; }
+  .paper-note { display: block; font-size: 0.75rem; color: var(--secondary); opacity: 0.75; margin-top: 0.0625rem; }
   .entry-list .entry { border-bottom: 1px solid var(--border); }
   .entry-list .entry:first-child { border-top: 1px solid var(--border); }
   .entry-trigger { display: flex; align-items: center; width: 100%; padding: 0.75rem 0; background: none; border: none; cursor: pointer; text-align: left; font-family: inherit; color: inherit; gap: 0; }
@@ -144,10 +144,11 @@
           <div class="entry-body">
             <div class="entry-details">
               <ul>
-                <li>ML lead for <a href="https://b17news.com/disney-employees-describe-its-internal-ai-strategy-from-disneygpt-to-a-new-jarvis-tool-in-the-works/" target="_blank" rel="noopener">JARVIS</a> — Imagineering's agentic AI platform serving ~10,000 daily users, built on 70 years of institutional knowledge</li>
-                <li data-lens="builder">Self-hosted the model stack — 2&times; 8-H100 nodes running fine-tuned Mistral/Mixtral, custom embeddings and rerankers, served via vLLM + LiteLLM</li>
-                <li data-lens="builder">Invented self-maintaining hierarchical tool routing for LLM agents (patent filed); multi-agent architectures and MCP integrations across hundreds of tools</li>
-                <li data-lens="leader">Team of 6 shipping distilled-model products — ~$12M/yr in inference savings</li>
+                <li>ML lead for <a href="https://b17news.com/disney-employees-describe-its-internal-ai-strategy-from-disneygpt-to-a-new-jarvis-tool-in-the-works/" target="_blank" rel="noopener">JARVIS</a> — Imagineering's agentic AI platform, ~10,000 daily users</li>
+                <li data-lens="builder">Self-hosted the model stack — 16 H100s, fine-tuned open models, vLLM + LiteLLM</li>
+                <li data-lens="builder">Invented self-maintaining tool routing for LLM agents — patent filed</li>
+                <li data-lens="builder">Multi-agent architectures and MCP integrations across hundreds of tools</li>
+                <li data-lens="leader">Team of 6; distilled models saving ~$12M/yr in inference</li>
                 <li data-lens="leader">Cross-org ML strategy across Imagineering, Disney Research, and Studios</li>
               </ul>
             </div>
@@ -167,11 +168,12 @@
           <div class="entry-body">
             <div class="entry-details">
               <ul>
-                <li>Founding ML engineer for PhotoPass — a ~$100M/yr business; built its ML portfolio from zero to 15+ products and $16M/yr in ML-driven revenue</li>
-                <li data-lens="builder">Automated character photography across every US and EU park — 20M+ images/day, 60ms edge inference</li>
-                <li data-lens="builder">Anticipatory capture: an LSTM head on the detector's own backbone latents predicts the shot 1.5s early — 15 &rarr; 60 FPS with no second model</li>
-                <li data-lens="leader">Grew the function from 1 to a 20-person org; stood up a 40-person annotation team, retraining photographers displaced by the automation</li>
-                <li>Golden datasets and annotation infrastructure behind Web Slingers: A Spider-Man Adventure</li>
+                <li>Founding ML engineer for PhotoPass — 0 &rarr; 15+ products, $16M/yr in ML-driven revenue</li>
+                <li data-lens="builder">Automated character photography across every US and EU park — 20M+ images/day</li>
+                <li data-lens="builder">Anticipatory capture — predicts the shot 1.5s before it happens, 15 &rarr; 60 FPS</li>
+                <li data-lens="leader">Grew the function from 1 to a 20-person org</li>
+                <li data-lens="leader">Photographers displaced by the automation became its 40-person annotation team</li>
+                <li>Golden datasets behind Web Slingers: A Spider-Man Adventure</li>
               </ul>
             </div>
           </div>
@@ -351,13 +353,13 @@
 
     <div class="divider"></div>
 
-    <!-- Projects & Research -->
+    <!-- Lab -->
     <section>
       <div class="section-header">
-        <div class="section-label">Projects &amp; Research</div>
-        <button class="section-toggle" data-section="projects">Show all</button>
+        <div class="section-label">Lab</div>
+        <button class="section-toggle" data-section="lab">Show all</button>
       </div>
-      <div class="entry-list" data-accordion="projects">
+      <div class="entry-list" data-accordion="lab">
 
         <div class="entry">
           <button class="entry-trigger" aria-expanded="false">
@@ -372,13 +374,12 @@
           <div class="entry-body">
             <div class="entry-details">
               <ul>
-                <li>Data-annotation platform spanning 14 modalities &mdash; bounding boxes to LLM RLHF (tool-use, CoT, DPO)</li>
-                <li>SAM + GroundingDINO assisted labeling, SSO/RBAC, full Docker stack (Apache-2.0)</li>
+                <li>Open-source annotation platform &mdash; 14 modalities, bounding boxes to LLM RLHF</li>
+                <li>SAM + GroundingDINO assisted labeling, SSO/RBAC, full Docker stack</li>
               </ul>
             </div>
           </div>
         </div>
-
         <div class="entry">
           <button class="entry-trigger" aria-expanded="false">
             <div class="entry-trigger-content">
@@ -399,12 +400,11 @@
             </div>
           </div>
         </div>
-
         <div class="entry">
           <button class="entry-trigger" aria-expanded="false">
             <div class="entry-trigger-content">
               <div class="entry-left">
-                <span class="entry-title">clay-code</span>
+                <span class="entry-title">Clay Code</span>
               </div>
               <span class="entry-date">Agent Tooling</span>
             </div>
@@ -419,12 +419,11 @@
             </div>
           </div>
         </div>
-
         <div class="entry">
           <button class="entry-trigger" aria-expanded="false">
             <div class="entry-trigger-content">
               <div class="entry-left">
-                <span class="entry-title">1-bit Quantization Replication</span>
+                <span class="entry-title">PrismML 1-Bit Quantization</span>
               </div>
               <span class="entry-date">Research</span>
             </div>
@@ -433,12 +432,25 @@
           <div class="entry-body">
             <div class="entry-details">
               <ul>
-                <li>Independently replicating PrismML's closed intelligence-density results on homelab hardware</li>
+                <li>Independently replicating PrismML's closed intelligence-density results</li>
                 <li>MoLoRA routing, STE-QAT, speculative decoding, bit-flip continual learning</li>
               </ul>
             </div>
           </div>
         </div>
+
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Projects & Research -->
+    <section>
+      <div class="section-header">
+        <div class="section-label">Projects &amp; Research</div>
+        <button class="section-toggle" data-section="projects">Show all</button>
+      </div>
+      <div class="entry-list" data-accordion="projects">
 
         <div class="entry">
           <button class="entry-trigger" aria-expanded="false">
@@ -575,8 +587,8 @@
     <section>
       <div class="section-label">Papers</div>
       <ul class="patent-list">
-        <li><span><a href="papers/look-sharp-cartographic-vqa.pdf" target="_blank" rel="noopener">Look Sharp: Resolution Scaling for Cartographic VQA</a> <span class="paper-note">&mdash; SOTA on the FRIEDA benchmark, 44.0% vs 38.2% published best</span></span> <span class="patent-year">2026</span></li>
-        <li><span><a href="papers/decoding-latent-spaces.pdf" target="_blank" rel="noopener">Decoding Latent Spaces: LLM vs Encoder-Only Embeddings</a> <span class="paper-note">&mdash; MTEB retrieval study, with Drexel faculty</span></span> <span class="patent-year">2026</span></li>
+        <li><span><a href="papers/look-sharp-cartographic-vqa.pdf" target="_blank" rel="noopener">Look Sharp: Resolution Scaling for Cartographic VQA</a> <span class="paper-note">SOTA on the FRIEDA benchmark &mdash; 44.0% vs 38.2% published best</span></span> <span class="patent-year">2026</span></li>
+        <li><span><a href="papers/decoding-latent-spaces.pdf" target="_blank" rel="noopener">Decoding Latent Spaces: LLM vs Encoder-Only Embeddings</a> <span class="paper-note">MTEB retrieval study, with Drexel faculty</span></span> <span class="patent-year">2026</span></li>
         <li><span><a href="https://pubs.acs.org/doi/10.1021/acs.oprd.0c00411" target="_blank" rel="noopener">Organic Process Research &amp; Development (ACS)</a> <span class="paper-note">&mdash; co-author</span></span> <span class="patent-year">2021</span></li>
       </ul>
     </section>
