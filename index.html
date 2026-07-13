@@ -31,6 +31,17 @@
   .section-label { font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--secondary); }
   .section-header .section-label { margin-bottom: 0; }
   section > .section-label { margin-bottom: 0.875rem; }
+  .section-sub { font-size: 0.8125rem; color: var(--secondary); line-height: 1.6; margin: -0.375rem 0 1rem; }
+  .collapse-toggle { cursor: pointer; user-select: none; align-items: center; margin-bottom: 0; }
+  .collapse-meta { display: flex; align-items: center; gap: 0.6rem; }
+  .collapse-count { font-size: 0.6875rem; color: var(--secondary); letter-spacing: 0.02em; }
+  .collapse-chevron { width: 14px; height: 14px; color: var(--secondary); transition: transform 0.3s ease; }
+  .collapse-chevron svg { display: block; width: 100%; height: 100%; }
+  .collapsible.open .collapse-chevron { transform: rotate(180deg); }
+  .collapse-body { height: 0; overflow: hidden; transition: height 0.3s ease; }
+  .collapse-inner { padding-top: 0.875rem; }
+  .pp-preview { padding-top: 0.875rem; }
+  .collapsible.open .pp-preview { display: none; }
   .section-toggle { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 0.6875rem; font-weight: 400; color: var(--secondary); background: none; border: none; cursor: pointer; padding: 0; position: relative; letter-spacing: 0.02em; }
   .section-toggle::after { content: ''; position: absolute; bottom: -1px; left: 0; width: 0; height: 1px; background-color: var(--secondary); transition: width 0.25s ease; }
   .section-toggle:hover::after { width: 100%; }
@@ -62,11 +73,13 @@
   .entry-details a { color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); transition: border-color 0.2s ease; }
   .entry-details a:hover { border-color: var(--text); }
   .patent-list { list-style: none; padding: 0; }
-  .patent-list li { font-size: 0.875rem; line-height: 1.65; color: var(--secondary); padding: 0.1875rem 0; display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
-  .patent-list a { color: var(--secondary); text-decoration: none; position: relative; }
+  .patent-list li { font-size: 0.875rem; line-height: 1.5; color: var(--text); padding: 0.5rem 0; display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; border-bottom: 1px solid var(--border); }
+  .patent-list a { color: var(--text); text-decoration: none; position: relative; }
   .patent-list a::after { content: ''; position: absolute; bottom: -1px; left: 0; width: 0; height: 1px; background-color: var(--secondary); transition: width 0.25s ease; }
   .patent-list a:hover::after { width: 100%; }
   .patent-year { font-size: 0.75rem; color: var(--secondary); flex-shrink: 0; }
+  .patent-subhead { font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--secondary); opacity: 0.65; margin: 1rem 0 0.375rem; }
+  .patent-subhead:first-of-type { margin-top: 0; }
   .patents-more { margin-top: 0.75rem; }
   .patents-more-trigger { font-size: 0.8125rem; color: var(--secondary); cursor: pointer; display: inline-flex; align-items: center; gap: 0.375rem; background: none; border: none; padding: 0; font-family: inherit; transition: color 0.2s ease; }
   .patents-more-trigger:hover { color: var(--text); }
@@ -124,9 +137,8 @@
         <div class="section-label">Experience</div>
         <div class="section-controls">
           <span class="lens-group" role="group" aria-label="Experience lens">
-            <button class="lens-option active" data-lens="all">All</button><span class="lens-sep">&middot;</span><button class="lens-option" data-lens="builder">Builder</button><span class="lens-sep">&middot;</span><button class="lens-option" data-lens="leader">Leader</button>
+            <button class="lens-option" data-lens="builder">Builder</button><span class="lens-sep">&middot;</span><button class="lens-option" data-lens="leader">Leader</button><span class="lens-sep">&middot;</span><button class="lens-option" data-lens="all">All</button>
           </span>
-          <button class="section-toggle" data-section="experience">Show all</button>
         </div>
       </div>
       <div class="entry-list" data-accordion="experience">
@@ -144,11 +156,11 @@
           <div class="entry-body">
             <div class="entry-details">
               <ul>
-                <li>ML lead for <a href="https://b17news.com/disney-employees-describe-its-internal-ai-strategy-from-disneygpt-to-a-new-jarvis-tool-in-the-works/" target="_blank" rel="noopener">JARVIS</a> — Imagineering's agentic AI platform (RAG + agents), ~10,000 daily users</li>
+                <li>ML lead for <a href="https://b17news.com/disney-employees-describe-its-internal-ai-strategy-from-disneygpt-to-a-new-jarvis-tool-in-the-works/" target="_blank" rel="noopener">JARVIS</a> — Imagineering's agentic AI platform, &gt;80% adoption (~10k DAU)</li>
                 <li data-lens="builder">Self-hosted the model stack — 16 H100s, fine-tuned open models, vLLM + LiteLLM</li>
-                <li data-lens="builder">Invented self-maintaining tool routing for LLM agents — patent filed</li>
+                <li data-lens="builder">Invented self-maintaining agent tool routing + multimodal MoE — patents below</li>
                 <li data-lens="builder">Multi-agent architectures and MCP integrations across hundreds of tools</li>
-                <li data-lens="leader">Team of 6; distilled models saving ~$12M/yr in inference</li>
+                <li data-lens="leader">Team of 6; moved frontier-model workloads to self-hosted inference &mdash; ~10x cheaper per run</li>
                 <li data-lens="leader">Cross-org ML strategy across Imagineering, Disney Research, and Studios</li>
               </ul>
             </div>
@@ -170,54 +182,10 @@
               <ul>
                 <li>Founding ML engineer for PhotoPass — 0 &rarr; 15+ products, $16M/yr in ML-driven revenue</li>
                 <li data-lens="builder"><a href="https://www.disneytouristblog.com/automated-cameras-mickey-minnie-meet-magic-kingdom/" target="_blank" rel="noopener">Automated character photography</a> across every US and EU park — 20M+ images/day</li>
-                <li data-lens="builder">Anticipatory capture — predicts the shot 1.5s before it happens, 15 &rarr; 60 FPS</li>
+                <li data-lens="builder">Anticipatory capture (15 &rarr; 60 FPS), group recognition, auto-edit, moderation</li>
                 <li data-lens="leader">Grew the function from 1 to a 20-person org</li>
                 <li data-lens="leader">Photographers displaced by the automation became its 40-person annotation team</li>
-                <li>Golden datasets behind Web Slingers: A Spider-Man Adventure</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="entry">
-          <button class="entry-trigger" aria-expanded="false">
-            <div class="entry-trigger-content">
-              <div class="entry-left">
-                <span class="entry-title">Banawa &amp; Co</span>
-                <span class="entry-role">Advisor</span>
-              </div>
-            </div>
-            <span class="entry-chevron"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 6 8 10 12 6"/></svg></span>
-          </button>
-          <div class="entry-body">
-            <div class="entry-details">
-              <ul>
-                <li>Small-batch fashion manufacturer in the <a href="https://www.carolinatextiledistrict.com" target="_blank" rel="noopener">Carolina Textile District</a></li>
-                <li>ML and automation strategy for design-to-production pipeline</li>
-                <li>Technical due diligence and vendor evaluation for ML tooling</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="entry">
-          <button class="entry-trigger" aria-expanded="false">
-            <div class="entry-trigger-content">
-              <div class="entry-left">
-                <span class="entry-title">Black Knight</span>
-                <span class="entry-role">Lead ML Engineer</span>
-              </div>
-            </div>
-            <span class="entry-chevron"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 6 8 10 12 6"/></svg></span>
-          </button>
-          <div class="entry-body">
-            <div class="entry-details">
-              <ul>
-                <li>Mortgage procurement automation for the top 10 global banks</li>
-                <li data-lens="leader">Grew the applied deep learning team 1 &rarr; 12</li>
-                <li data-lens="builder">Took production performance from 41% to 92%</li>
-                <li data-lens="builder">Reduced overhead costs 30x via serverless architectures</li>
-                <li>Increased NLP transformer performance via novel pruning and ensemble methods</li>
+                <li>Golden datasets behind <a href="https://en.wikipedia.org/wiki/Web_Slingers:_A_Spider-Man_Adventure" target="_blank" rel="noopener">Web Slingers: A Spider-Man Adventure</a></li>
               </ul>
             </div>
           </div>
@@ -237,8 +205,31 @@
             <div class="entry-details">
               <ul>
                 <li>Core developer on <a href="https://www.lexisnexis.com/en-us/products/lexis-plus.page" target="_blank" rel="noopener">Lexis+</a>, the flagship legal research platform</li>
-                <li>Productionalized custom OCR and information extraction serving 300M docs daily</li>
+                <li>Productionalized custom OCR and information extraction over 300M+ documents</li>
                 <li>Production pipelines for training, fine-tuning, and deployment of GPT-based foundation models</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="entry">
+          <button class="entry-trigger" aria-expanded="false">
+            <div class="entry-trigger-content">
+              <div class="entry-left">
+                <span class="entry-title">Black Knight</span>
+                <span class="entry-role">Lead ML Engineer</span>
+              </div>
+            </div>
+            <span class="entry-chevron"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 6 8 10 12 6"/></svg></span>
+          </button>
+          <div class="entry-body">
+            <div class="entry-details">
+              <ul>
+                <li>Led ML on AIVA &mdash; mortgage-workflow AI for top-10 banks (<a href="https://d1.awsstatic.com/events/Summits/reinvent2022/AIM214_Learn-how-Black-Knight-is-using-AI-to-accelerate-mortgage-workflows.pdf.pdf" target="_blank" rel="noopener">AWS re:Invent 2022</a>)</li>
+                <li data-lens="leader">Grew the applied deep learning team 1 &rarr; 12</li>
+                <li data-lens="builder">Took production performance from 41% to 92%</li>
+                <li data-lens="builder">Reduced overhead costs 30x via serverless architectures</li>
+                <li>Increased NLP transformer performance via novel pruning and ensemble methods</li>
               </ul>
             </div>
           </div>
@@ -356,11 +347,33 @@
     <!-- Lab -->
     <section>
       <div class="section-header">
-        <div class="section-label">Lab</div>
+        <div class="section-label">Projects &amp; Research</div>
         <button class="section-toggle" data-section="lab">Show all</button>
       </div>
+      <p class="section-sub">Personal research lab &mdash; DGX Spark, dual RTX 6000, Orin Nano + Pi edge &middot; k3s &middot; OPNsense</p>
       <div class="entry-list" data-accordion="lab">
 
+        <div class="entry">
+          <button class="entry-trigger" aria-expanded="false">
+            <div class="entry-trigger-content">
+              <div class="entry-left">
+                <span class="entry-title">Chim-Chim</span>
+                <span class="entry-role">in progress</span>
+              </div>
+              <span class="entry-date">Robotics</span>
+            </div>
+            <span class="entry-chevron"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 6 8 10 12 6"/></svg></span>
+          </button>
+          <div class="entry-body">
+            <div class="entry-details">
+              <ul>
+                <li>45-DOF animatronic of the Speed Racer chimp</li>
+                <li>Maya rig &rarr; URDF/USD &rarr; Isaac Sim RL &rarr; ONNX, C++17 real-time firmware</li>
+                <li>Sim-to-real puppeteering from a Steam Deck</li>
+              </ul>
+            </div>
+          </div>
+        </div>
         <div class="entry">
           <button class="entry-trigger" aria-expanded="false">
             <div class="entry-trigger-content">
@@ -376,26 +389,6 @@
               <ul>
                 <li>Open-source annotation platform &mdash; 14 modalities, bounding boxes to LLM RLHF</li>
                 <li>SAM + GroundingDINO assisted labeling, SSO/RBAC, full Docker stack</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="entry">
-          <button class="entry-trigger" aria-expanded="false">
-            <div class="entry-trigger-content">
-              <div class="entry-left">
-                <span class="entry-title">Chim-Chim</span>
-              </div>
-              <span class="entry-date">Robotics</span>
-            </div>
-            <span class="entry-chevron"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 6 8 10 12 6"/></svg></span>
-          </button>
-          <div class="entry-body">
-            <div class="entry-details">
-              <ul>
-                <li>45-DOF animatronic of the Speed Racer chimp</li>
-                <li>Maya rig &rarr; URDF/USD &rarr; Isaac Sim RL &rarr; ONNX, C++17 real-time firmware</li>
-                <li>Sim-to-real puppeteering from a Steam Deck</li>
               </ul>
             </div>
           </div>
@@ -444,10 +437,56 @@
 
     <div class="divider"></div>
 
-    <!-- Projects & Research -->
+    <!-- Patents & Papers (combined, collapsible) -->
+    <section class="collapsible" id="pp-section">
+      <div class="section-header collapse-toggle" role="button" tabindex="0" aria-expanded="false">
+        <div class="section-label">Patents &amp; Papers</div>
+        <div class="collapse-meta"><span class="collapse-count"></span><span class="collapse-chevron"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 6 8 10 12 6"/></svg></span></div>
+      </div>
+      <div class="pp-preview">
+        <ul class="patent-list">
+          <li>Hierarchy-Aware Hard Negative Mining for Document Retrieval <span class="patent-year">2026</span></li>
+          <li>Context-Restricted Prompt Routing for Structured Multimodal Information Extraction <span class="patent-year">2026</span></li>
+          <li><span><a href="papers/look-sharp-cartographic-vqa.pdf" target="_blank" rel="noopener">Look Sharp: Resolution Scaling for Cartographic VQA</a> <span class="paper-note">SOTA on the FRIEDA benchmark &mdash; 44.0% vs 38.2% published best</span></span> <span class="patent-year">2026</span></li>
+        </ul>
+      </div>
+      <div class="collapse-body">
+        <div class="collapse-inner">
+          <div class="patent-subhead">Upcoming</div>
+          <ul class="patent-list">
+            <li>Hierarchy-Aware Hard Negative Mining for Document Retrieval <span class="patent-year">2026</span></li>
+            <li>Context-Restricted Prompt Routing for Structured Multimodal Information Extraction <span class="patent-year">2026</span></li>
+          </ul>
+          <div class="patent-subhead">Filed</div>
+          <ul class="patent-list">
+            <li>Self-Maintaining Hierarchical Tool Routing for LLM Agent Ecosystems <span class="patent-year">2026</span></li>
+            <li>Gated Multimodal Mixture of Experts for Document Classification <span class="patent-year">2025</span></li>
+            <li>Auto-Calibration of Projection Systems in Feature Sparse Scenes <span class="patent-year">2025</span></li>
+          </ul>
+          <div class="patent-subhead">Granted</div>
+          <ul class="patent-list">
+            <li><a href="https://patents.google.com/patent/US20250259309A1/en" target="_blank" rel="noopener">Crowd Removal &amp; Automatic Focus for Images</a> <span class="patent-year">2025</span></li>
+            <li><a href="https://patents.google.com/patent/US20250254279A1/en" target="_blank" rel="noopener">Neural Augmented Color Mapping</a> <span class="patent-year">2025</span></li>
+            <li><a href="https://patents.google.com/patent/US20250245878A1/en" target="_blank" rel="noopener">Image Style Transfer</a> <span class="patent-year">2025</span></li>
+            <li><a href="https://patents.google.com/patent/US20250245884A1/en" target="_blank" rel="noopener">Facial Image Swapping</a> <span class="patent-year">2025</span></li>
+            <li><a href="https://patents.google.com/patent/US20250238898A1/en" target="_blank" rel="noopener">Deep Image Delighting</a> <span class="patent-year">2025</span></li>
+          </ul>
+          <div class="patent-subhead">Papers</div>
+          <ul class="patent-list papers">
+            <li><span><a href="papers/look-sharp-cartographic-vqa.pdf" target="_blank" rel="noopener">Look Sharp: Resolution Scaling for Cartographic VQA</a> <span class="paper-note">SOTA on the FRIEDA benchmark &mdash; 44.0% vs 38.2% published best</span></span> <span class="patent-year">2026</span></li>
+            <li><span><a href="papers/decoding-latent-spaces.pdf" target="_blank" rel="noopener">Decoding Latent Spaces: LLM vs Encoder-Only Embeddings</a> <span class="paper-note">MTEB retrieval study, with Drexel faculty</span></span> <span class="patent-year">2024</span></li>
+            <li><span><a href="https://pubs.acs.org/doi/10.1021/acs.oprd.0c00411" target="_blank" rel="noopener">High-Throughput Automated Powder Dispensing Platforms (OPRD, ACS)</a> <span class="paper-note">research contributor &mdash; GSK dispensing-automation lab</span></span> <span class="patent-year">2020</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Older Projects -->
     <section>
       <div class="section-header">
-        <div class="section-label">Projects &amp; Research</div>
+        <div class="section-label">Older Projects</div>
         <button class="section-toggle" data-section="projects">Show all</button>
       </div>
       <div class="entry-list" data-accordion="projects">
@@ -468,6 +507,28 @@
               <ul>
                 <li>Mobile job-site management platform for construction subcontractors</li>
                 <li>Real-time crew tracking, digital invoicing, and project documentation (<a href="https://getzenhammer.com" target="_blank" rel="noopener">getzenhammer.com</a>)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="entry">
+          <button class="entry-trigger" aria-expanded="false">
+            <div class="entry-trigger-content">
+              <div class="entry-left">
+                <span class="entry-title">Banawa &amp; Co</span>
+                <span class="entry-role">Advisor</span>
+              </div>
+              <span class="entry-date">Advisory</span>
+            </div>
+            <span class="entry-chevron"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 6 8 10 12 6"/></svg></span>
+          </button>
+          <div class="entry-body">
+            <div class="entry-details">
+              <ul>
+                <li>Small-batch fashion manufacturer in the <a href="https://www.carolinatextiledistrict.com" target="_blank" rel="noopener">Carolina Textile District</a></li>
+                <li>ML and automation strategy for design-to-production pipeline</li>
+                <li>Technical due diligence and vendor evaluation for ML tooling</li>
               </ul>
             </div>
           </div>
@@ -510,26 +571,6 @@
               <ul>
                 <li>Supervised 16 engineers designing custom IoT control systems for Drexel's hyperloop pod</li>
                 <li>Pod manufactured and tested at SpaceX HQ in Hawthorne with a <a href="https://drexel.edu/engineering/news-events/news/archive/2016/January/college-of-engineering-students-compete-in-spacex-hyperloop-competition/" target="_blank" rel="noopener">team of 110+</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="entry">
-          <button class="entry-trigger" aria-expanded="false">
-            <div class="entry-trigger-content">
-              <div class="entry-left">
-                <span class="entry-title">Blinc</span>
-              </div>
-              <span class="entry-date">Co-founder</span>
-            </div>
-            <span class="entry-chevron"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 6 8 10 12 6"/></svg></span>
-          </button>
-          <div class="entry-body">
-            <div class="entry-details">
-              <ul>
-                <li>Social discovery iOS app with custom DL recommendation systems</li>
-                <li>Cloud AI for OCR, sentiment analysis, and object recognition</li>
               </ul>
             </div>
           </div>
@@ -583,46 +624,6 @@
 
     <div class="divider"></div>
 
-    <!-- Papers -->
-    <section>
-      <div class="section-label">Papers</div>
-      <ul class="patent-list">
-        <li><span><a href="papers/look-sharp-cartographic-vqa.pdf" target="_blank" rel="noopener">Look Sharp: Resolution Scaling for Cartographic VQA</a> <span class="paper-note">SOTA on the FRIEDA benchmark &mdash; 44.0% vs 38.2% published best</span></span> <span class="patent-year">2026</span></li>
-        <li><span><a href="papers/decoding-latent-spaces.pdf" target="_blank" rel="noopener">Decoding Latent Spaces: LLM vs Encoder-Only Embeddings</a> <span class="paper-note">MTEB retrieval study, with Drexel faculty</span></span> <span class="patent-year">2024</span></li>
-        <li><span><a href="https://pubs.acs.org/doi/10.1021/acs.oprd.0c00411" target="_blank" rel="noopener">High-Throughput Automated Powder Dispensing Platforms (OPRD, ACS)</a> <span class="paper-note">research contributor &mdash; GSK dispensing-automation lab</span></span> <span class="patent-year">2020</span></li>
-      </ul>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- Patents -->
-    <section>
-      <div class="section-label">Patents</div>
-      <ul class="patent-list">
-        <li><a href="https://patents.google.com/patent/US20250259309A1/en" target="_blank" rel="noopener">Crowd Removal &amp; Automatic Focus for Images</a> <span class="patent-year">2025</span></li>
-        <li><a href="https://patents.google.com/patent/US20250254279A1/en" target="_blank" rel="noopener">Neural Augmented Color Mapping</a> <span class="patent-year">2025</span></li>
-        <li><a href="https://patents.google.com/patent/US20250245878A1/en" target="_blank" rel="noopener">Image Style Transfer</a> <span class="patent-year">2025</span></li>
-        <li><a href="https://patents.google.com/patent/US20250245884A1/en" target="_blank" rel="noopener">Facial Image Swapping</a> <span class="patent-year">2025</span></li>
-        <li><a href="https://patents.google.com/patent/US20250238898A1/en" target="_blank" rel="noopener">Deep Image Delighting</a> <span class="patent-year">2025</span></li>
-      </ul>
-      <div class="patents-more">
-        <button class="patents-more-trigger" onclick="togglePendingPatents(this)">
-          <span class="chevron">&#9654;</span> and more filed
-        </button>
-        <div class="patents-more-content">
-          <ul class="patents-filed-list">
-            <li>Self-Maintaining Hierarchical Tool Routing for LLM Agent Ecosystems</li>
-            <li>Hierarchy-Aware Hard Negative Mining for Document Retrieval</li>
-            <li>Gated Multimodal Mixture of Experts for Document Classification</li>
-            <li>Context-Restricted Prompt Routing for Structured Multimodal Information Extraction</li>
-            <li>Auto-Calibration of Projection Systems in Feature Sparse Scenes</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <div class="divider"></div>
-
     <!-- Education -->
     <section>
       <div class="section-label">Education</div>
@@ -633,13 +634,14 @@
 
     <!-- Interests -->
     <section>
-      <div class="section-label">Also</div>
+      <div class="section-label">Fun</div>
       <ul class="interests-list">
         <li>Table tennis <span class="qualifier">&mdash; 1900-rated club-casual player</span></li>
         <li>Music <span class="qualifier">&mdash; <a href="https://open.spotify.com/playlist/1Bsp6s2myOsd0Pm2uTDK7I?si=75555c8077c84ee0" target="_blank" rel="noopener">prog metal</a>, <a href="https://www.youtube.com/watch?v=gvCTPVv2NOo" target="_blank" rel="noopener">jazz</a>, <a href="https://open.spotify.com/playlist/292DNaXtSTM32wk3ogVAbH?si=9910bf63767d4c20" target="_blank" rel="noopener">campfire</a>, <a href="https://open.spotify.com/playlist/7DsYHgjhVhEvTNuXrPIAhL?si=7f3ca5030a56434d" target="_blank" rel="noopener">chill</a></span></li>
         <li>Photogrammetry <span class="qualifier">&mdash; <a href="https://enterprise.dji.com/matrice-4-series" target="_blank" rel="noopener">DJI Matrice 4T</a> fleet + custom FPV builds</span></li>
-        <li>Homelab <span class="qualifier">&mdash; self-hosted everything: k3s, OPNsense, and a <a href="https://www.nvidia.com/en-us/products/workstations/dgx-spark/" target="_blank" rel="noopener">DGX</a> cluster node</span></li>
+        <li>Homelab <span class="qualifier">&mdash; self-hosted research lab: k3s, OPNsense, and a <a href="https://www.nvidia.com/en-us/products/workstations/dgx-spark/" target="_blank" rel="noopener">DGX</a> cluster node</span></li>
         <li>Parkour <span class="qualifier">&mdash; Yamakasi student, former <a href="https://parkourgenerations.com/" target="_blank" rel="noopener">PKGen</a> instructor</span></li>
+        <li>Scuba diving <span class="qualifier">&mdash; <a href="https://www.instagram.com/hollywood_divers" target="_blank" rel="noopener">NAUI</a> open-water certified</span></li>
         <li>Motorcycles <span class="qualifier">&mdash; <a href="https://www.motoguzzi.com/us_EN/models/v7/" target="_blank" rel="noopener">Moto Guzzi V7 Stone</a>, Ducati, Harley</span></li>
         <li>Slam poetry <span class="qualifier">&mdash; <a href="https://hellopoetry.com/@AFKforLoL/poems" target="_blank" rel="noopener">casual</a> open-mic slam poet</span></li>
         <li>3D printing <span class="qualifier">&mdash; dabbling ;)</span></li>
@@ -745,43 +747,75 @@
         });
       })(toggleBtns[t]);
     }
+
+    // Lens control: Builder / Leader / All. Clicking one applies that lens and expands
+    // all Experience entries; clicking the active one again collapses them all.
+    var lensGroup = document.querySelector('.lens-group');
+    if (lensGroup) {
+      var lensButtons = lensGroup.querySelectorAll('.lens-option');
+      var lensAccordion = document.querySelector('.entry-list[data-accordion="experience"]');
+      var lensState = { lens: null, expanded: false };
+      function applyLens(lens) {
+        var items = lensAccordion.querySelectorAll('.entry-details li');
+        for (var i = 0; i < items.length; i++) {
+          var tag = items[i].getAttribute('data-lens');
+          items[i].style.display = (lens === 'all' || !tag || tag === lens) ? '' : 'none';
+        }
+        var openBodies = lensAccordion.querySelectorAll('.entry.open .entry-body');
+        for (var j = 0; j < openBodies.length; j++) { openBodies[j].style.height = 'auto'; }
+      }
+      function setActiveLens(btn) {
+        for (var k = 0; k < lensButtons.length; k++) lensButtons[k].classList.remove('active');
+        if (btn) btn.classList.add('active');
+      }
+      for (var b = 0; b < lensButtons.length; b++) {
+        (function(btn) {
+          btn.addEventListener('click', function() {
+            var lens = btn.getAttribute('data-lens');
+            var entries = lensAccordion.querySelectorAll('.entry');
+            if (lensState.lens === lens && lensState.expanded) {
+              for (var i = 0; i < entries.length; i++) closeEntry(entries[i]);
+              lensState.expanded = false;
+            } else {
+              setActiveLens(btn);
+              applyLens(lens);
+              for (var i = 0; i < entries.length; i++) openEntry(entries[i]);
+              lensState.lens = lens;
+              lensState.expanded = true;
+            }
+          });
+        })(lensButtons[b]);
+      }
+    }
   })();
 
   (function() {
-    var group = document.querySelector('.lens-group');
-    if (!group) return;
-    var buttons = group.querySelectorAll('.lens-option');
-    var accordion = document.querySelector('.entry-list[data-accordion="experience"]');
-    function applyLens(lens) {
-      var items = accordion.querySelectorAll('.entry-details li');
-      for (var i = 0; i < items.length; i++) {
-        var tag = items[i].getAttribute('data-lens');
-        var show = lens === 'all' || !tag || tag === lens;
-        items[i].style.display = show ? '' : 'none';
-      }
-      var openBodies = accordion.querySelectorAll('.entry.open .entry-body');
-      for (var j = 0; j < openBodies.length; j++) { openBodies[j].style.height = 'auto'; }
+    var sec = document.getElementById('pp-section');
+    if (!sec) return;
+    var toggle = sec.querySelector('.collapse-toggle');
+    var body = sec.querySelector('.collapse-body');
+    var inner = sec.querySelector('.collapse-inner');
+    var papers = sec.querySelectorAll('.collapse-inner ul.papers li').length;
+    var patents = sec.querySelectorAll('.collapse-inner .patent-list li').length - papers;
+    var count = sec.querySelector('.collapse-count');
+    var seeAll = 'See all &middot; ' + patents + ' patents &middot; ' + papers + ' papers';
+    if (count) count.innerHTML = seeAll;
+    function open() {
+      sec.classList.add('open'); toggle.setAttribute('aria-expanded', 'true');
+      if (count) count.innerHTML = 'Show less';
+      body.style.height = inner.offsetHeight + 'px';
+      var onEnd = function() { body.style.height = 'auto'; body.removeEventListener('transitionend', onEnd); };
+      body.addEventListener('transitionend', onEnd);
     }
-    for (var b = 0; b < buttons.length; b++) {
-      (function(btn) {
-        btn.addEventListener('click', function() {
-          for (var k = 0; k < buttons.length; k++) buttons[k].classList.remove('active');
-          btn.classList.add('active');
-          applyLens(btn.getAttribute('data-lens'));
-        });
-      })(buttons[b]);
+    function close() {
+      toggle.setAttribute('aria-expanded', 'false');
+      if (count) count.innerHTML = seeAll;
+      body.style.height = inner.offsetHeight + 'px'; body.offsetHeight;
+      sec.classList.remove('open'); body.style.height = '0';
     }
+    toggle.addEventListener('click', function() { sec.classList.contains('open') ? close() : open(); });
+    toggle.addEventListener('keydown', function(e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle.click(); } });
   })();
-
-  function togglePendingPatents(btn) {
-    var content = btn.nextElementSibling;
-    btn.classList.toggle('open');
-    if (btn.classList.contains('open')) {
-      content.style.maxHeight = content.scrollHeight + 'px';
-    } else {
-      content.style.maxHeight = '0';
-    }
-  }
 </script>
 </body>
 </html>
